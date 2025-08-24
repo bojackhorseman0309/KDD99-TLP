@@ -41,12 +41,12 @@
 
 En este trabajo practico se realiza un análisis y implementación de un árbol de decisión para el set de datos KDD99.
 
-Para efectos del proyecto se tomo un dataset reducido de KDD99, el cual contiene 10\% de los datos originales.
-En el cual se va tomar en cuenta solamente las clases `normal' que indica trafico normal y `backdoor' que indica trafico malicioso.
-Ademas de eso se creo una versión filtrada del dataset, sin duplicados, filas sin valores y datos categóricos convertidos a
+Para efectos del proyecto se tomo un dataset reducido de KDD99, el cual contiene 10\% de los datos originales,
+en el cual se va tomar en cuenta solamente las clases `normal' que indica tráfico normal y `backdoor' que indica tráfico malicioso.
+Además de eso se creo una versión filtrada del dataset, sin duplicados, filas sin valores y datos categóricos convertidos a
 numéricos mediante one-hot-encoding como lo son `protocol type', `service' y `flag'.
 
-Se realizo un análisis de los momentos estadísticos de las características del dataset, así como el calculo de la distancia jensen-shannon,
+Se realizó un análisis de los momentos estadísticos de las características del dataset, así como el calculo de la distancia Jensen-Shannon,
 histogramas comparativos y la creación, evaluación y análisis de un árbol de decisión.
 
 Se utilizo librerías como numpy, pandas, matplotlib, scipy, pytorch y sklearn para los métodos creados para el trabajo.
@@ -154,12 +154,12 @@ Los resultados para el conjunto de datos de ataque y normal fueron los siguiente
 \end{longtable}
 
 \begin{longtable}{lrrrr}
-  \caption{Momentos Estadísticos para el set de trafico normal} \\
+  \caption{Momentos Estadísticos para el set de tráfico normal} \\
   \toprule
   & Media & Desviación Estándar & Inclinación & Kurtosis \\
   \midrule
   \endfirsthead
-  \caption[]{Momentos Estadísticos para el set de trafico normal} \\
+  \caption[]{Momentos Estadísticos para el set de tráfico normal} \\
   \toprule
   & Media & Desviación Estándar & Inclinación & Kurtosis \\
   \midrule
@@ -251,49 +251,49 @@ Como se observan de las tablas anteriores es posible notar algunas diferencias e
 
 En este caso se podrían destacar los siguientes puntos a continuación.
 
-\subsubsection{Promedio}
+\subsubsection{Media}
 
 \begin{itemize}
-  \item La media de `duration' en el set de trafico normal es mucho mayor que en el set de ataque.
+  \item La media de `duration' en el set de tráfico normal es mucho mayor que en el set de ataque.
     Indicando que las conexiones maliciosas son mucho mas cortas.
   \item Los ataques de tipo `backdoor' envían una mayor cantidad de `src_bytes' y reciben una mayor cantidad de `dst_bytes' en promedio que las conexiones normales.
-    Se podría decir que sugiere que los atacantes están enviando payloads maliciosos y extrayendo mas información de lo habitual.
+    Se podría decir que sugiere que los atacantes están enviando payloads maliciosos y extrayendo gran cantidad de datos.
   \item Se puede observar como `logged_in' tiene una media de 1 en el set de ataque, lo que indica que las conexiones maliciosas se realizaron por medio de conexiones autenticadas.
-  \item En el trafico normal, características como `hot' y `num_compromised' tienen una media baja, lo que indica que en la mayoría de las conexiones normales no se intentan realizar acciones sospechosas al contrario de las conexiones maliciosas.
-  \item Curiosamente en características como `su_attempted' y `num_root' tienen una media mayor en el trafico normal que en el trafico malicioso.
-    Lo que podría indicar que los atacantes no intentan escalar privilegios o que lo hacen por otros medios, siendo un posible punto a investigar ya que lo común sería observar intentos de escalamiento de privilegios en el trafico malicioso.
+  \item En el tráfico normal, características como `hot' y `num_compromised' tienen una media baja, lo que indica que en la mayoría de las conexiones normales no se intentan realizar acciones sospechosas al contrario de las conexiones maliciosas.
+  \item Curiosamente en características como `su_attempted' y `num_root' tienen una media mayor en el tráfico normal que en el tráfico malicioso.
+    Lo que podría indicar que los atacantes no intentan escalar privilegios o que lo hacen por otros medios, siendo un posible punto a investigar ya que lo común sería observar intentos de escalamiento de privilegios en el tráfico malicioso.
 \end{itemize}
 
 \subsubsection{Desviación Estándar}
 
 \begin{itemize}
-  \item En una gran mayoría de características, la desviación estándar es baja en el lado del trafico de ataques, indicando que son mas precisos y consistentes, dando paso a un patrón predecible para utilizar en un clasificador.
+  \item En una gran mayoría de características, la desviación estándar es baja en el lado del tráfico de ataques, indicando que son mas precisos y consistentes, dando paso a un patrón predecible para utilizar en un clasificador.
     Los ataques normales si presentan una desviación que indica que sus valores están distribuidos de manera mas dispersa.
   \item En el lado normal es posible ver como casi ninguna desviación es 0, mientras que en el ataque existen una gran cantidad de características con valor de 0 o casi cero.
-  \item Se da una gran desviación en el trafico normal en características como `duration', `src_bytes' y `dst_bytes', lo que indica que las conexiones normales tienen una mayor variabilidad en su duración y en la cantidad de datos enviados y recibidos, siendo mas `humana'.
+  \item Se da una gran desviación en el tráfico normal en características como `duration', `src_bytes' y `dst_bytes', lo que indica que las conexiones normales tienen una mayor variabilidad en su duración y en la cantidad de datos enviados y recibidos, siendo mas `humana'.
 \end{itemize}
 
 \subsubsection{Inclinación}
 
 \begin{itemize}
-  \item En el trafico normal existe una inclinación mucho mas positiva que el trafico maliciosos, tendiendo a tener una cola hacia la derecha.
+  \item En el tráfico normal existe una inclinación mucho mas positiva que el tráfico maliciosos, tendiendo a tener una cola hacia la derecha.
     Es posible ver eso en campos como `duration', `src_bytes' y `dst_bytes'.
-  \item En el trafico malicioso, la inclinación tiende a ir cerca de cero o negativo, siendo distribuciones mas concentradas en comparación al trafico normal.
+  \item En el tráfico malicioso, la inclinación tiende a ir cerca de cero o negativo, siendo distribuciones mas concentradas en comparación al tráfico normal.
 \end{itemize}
 
 \subsubsection{Kurtosis}
 
 \begin{itemize}
-  \item El trafico normal presenta una kurtosis alta en campos como `duration', `src_bytes' y `dst_bytes', lo que podría concluir que tiene picos mas agudos y valores dispersos.
-  \item El trafico malicioso es mas uniforme ya que la kurtosis es mucho mas moderada.
+  \item El tráfico normal presenta una kurtosis alta en campos como `duration', `src_bytes' y `dst_bytes', lo que podría concluir que tiene picos mas agudos y valores dispersos.
+  \item El tráfico malicioso es mas uniforme ya que la kurtosis es mucho mas moderada.
 \end{itemize}
 
-\subsubsection{Conclusiones Generales}
+\subsubsection{Conclusiones}
 
 \begin{itemize}
-  \item Los ataques de tipo backdoor son mas constantes y precisos, sugiriendo que el trafico se enfoca en realizar acciones por medio de automatizaciones y ataques similares generando un patrón que podría ser de uso para detectar ataques.
-  \item Los ataques se concentran en áreas especificas por ejemplo el uso del servicio HTTP y protocolo TCP casi que exclusivamente siendo algo sospechoso al ver el trafico normal y ver que utilizar una gran cantidad de servicios y protocolos.
-  \item El trafico normal dada su distribución dispersa se podría concluir que es indicadora de ser mas `natural' y no ser generado por un atacante.
+  \item Los ataques de tipo backdoor son mas constantes y precisos, sugiriendo que el tráfico se enfoca en realizar acciones por medio de automatizaciones y ataques similares generando un patrón que podría ser de uso para detectar ataques.
+  \item Los ataques se concentran en áreas especificas por ejemplo el uso del servicio HTTP y protocolo TCP casi que exclusivamente siendo algo sospechoso al ver el tráfico normal y ver que utilizan una gran cantidad de servicios y protocolos.
+  \item El tráfico normal dada su distribución dispersa se podría concluir que es indicadora de ser mas `natural' y no parece generado por un atacante.
   \item Existen campos como `duration', `src_bytes', `dst_bytes', `logged_in' y `num_compromised', ademas de los diferentes servicios y protocolos, que se presentan como los campos mas característicos por utilizar para poder realizar clasificaciones.
   \item Dada la diferencia y patrones reconocibles entre los diferentes tráficos se podría decir que esto es un buen candidato para un algoritmo de clasificación, dados sus patrones marcados.
 \end{itemize}
@@ -301,16 +301,20 @@ En este caso se podrían destacar los siguientes puntos a continuación.
 \section{Histogramas y Distancia Jensen-Shannon}\label{sec:histogramas-y-distancia-jensen-shannon}
 
 En esta parte del trabajo se realizo la generación de histogramas para todas las
-características del dataset y se creo cada histograma con los datos del dataset normal y
+características del dataset y se creo con los datos del dataset normal y
 del dataset de ataque con el fin de poder observar diferencias entre los dos conjuntos de datos y sus campos.
 
-Finalmente se calculo la distancia Jensen-Shannon entre los histogramas de los diferentes campos del dataset normal y del dataset de ataque y se genero
-una tabla con las distancias calculadas para cada campo.
+Se utilizó un número de bins de 30 para todos los histogramas, con rangos normalizados
+para asegurar comparabilidad entre las distribuciones de normal y backdoor.
+
+Finalmente se calculo la distancia Jensen-Shannon entre los histogramas de los diferentes campos del dataset normal y del dataset de ataque,
+y se genero una tabla con las distancias calculadas para cada campo.
 
 \subsection{Histogramas}\label{subsec:histogramas}
 
-Los histogramas fueron generados mediante la extracción de los valores de los dataframes de ataque y trafico normal,
-y se genero un histograma para cada campo mediante el uso de la función `hist' de matplotlib.
+Los histogramas fueron generados mediante la extracción de los valores de los dataframes de ataque y tráfico normal,
+y se genero un histograma para cada campo mediante el uso de la función `hist' de matplotlib, además del uso
+de la función `histogram' de numpy.
 
 A continuación se muestran unos ejemplos de los histogramas generados para los campos `duration', `src_bytes' y `dst_bytes'.
 
@@ -322,15 +326,12 @@ A continuación se muestran unos ejemplos de los histogramas generados para los 
 
 En el notebook de la solución se pueden apreciar todos los histogramas generados.
 
-Como se observan en los histogramas presentados existen características continuas como lo pueden ser
+Como se observan en los histogramas presentados, existen características continuas como lo pueden ser
 `duration', `src_bytes' y `dst_bytes' que presentan distribuciones con colas largas.
-Cambien existen características
-binarias como lo pueden ser `logged_in' que presentan distribuciones binarias en las que es posible ver
-la diferencia entre el trafico normal y el trafico de ataques.
-Así como los campos generados
-de los servicios y protocolos que muestran distribuciones discretas.
-Ademas se puede observar como
-una gran cantidad de características presentan distribuciones asimétricas como en el caso de campos que son de tipo conteos o tasas.
+También existen características binarias como lo pueden ser `logged_in' que presentan distribuciones binarias en las que es posible ver
+la diferencia entre el tráfico normal y el tráfico de ataques, así como los campos generados de los servicios y protocolos que muestran distribuciones discretas.
+Además se puede observar como una gran cantidad de características presentan distribuciones asimétricas como
+en el caso de campos que son de tipo conteos o tasas.
 
 \subsection{Distancia Jensen-Shannon}\label{subsec:distancia-jensen-shannon}
 
@@ -365,7 +366,8 @@ una gran cantidad de características presentan distribuciones asimétricas como
 \end{longtable}
 
 En la tabla anterior podemos ver una tabla resumida con los campos que contienen las mayores distancias Jensen-Shannon.
-En el código de la implementación es posible ver la tabla completa pero se muestran los mas significativos de ejemplo en este documento.
+En el código de la implementación es posible ver la tabla completa pero se muestran los más significativos de ejemplo en este documento.
+En este caso se muestran las 11 características con mayor distancia Jensen-Shannon.
 
 Este numero nos ayuda a ver que tan diferentes son las distribuciones de los campos entre la clase normal y backdoor.
 
@@ -373,15 +375,16 @@ Como se aprecia en la tabla, el campo `hot' al tener una distancia alta, indica 
 muy diferentes entre la clase normal y la clase backdoor.
 
 Las siguientes serian algunos campos de tipo de tasa de errores, se podría interpretar de esto que los ataques backdoor
-generan tipos de errores que no son comunes en el trafico normal, dada las acciones que realizan los ataques.
+generan tipos de errores que no son comunes en el tráfico normal, dada las acciones que realizan los ataques.
 
 En cuanto a campos de servicios y protocolos, se muestran algunas con distancias moderadas y altas, como por ejemplo
 `service_http' y protocolos como `tcp' y `udp' que muestran una distancia moderada indicando diferencias en el uso de los mismos.
 
-Existen algunas características con distancia de cero, que indican que no son útiles para ser utilizadas para
-ser usadas como diferenciador entre clases ya que tienen una distribución casi idéntica en ambos conjuntos de datos.
+Las características con distancia JS cerca de cero (como land, wrong_fragment, urgent)
+fueron efectivamente identificadas como no discriminativas y podrían ser excluidas
+del modelo sin pérdida de información relevante.
 
-\subsection{Conclusiones Generales}\label{subsec:conclusiones-generales}
+\subsection{Conclusiones}\label{subsec:conclusiones}
 
 \begin{itemize}
   \item Mediante los histogramas y la distancia Jensen-Shannon es posible identificar las características que deberían ser tomadas como prioridad para el árbol de decisión, ya que son las mas discriminativas.
@@ -392,22 +395,19 @@ ser usadas como diferenciador entre clases ya que tienen una distribución casi 
 
 \section{Árbol de Decisión}\label{sec:arbol-de-decision}
 
-En esta sección del trabajo se realizo la creación de las funciones mas importantes para el arbol de decisión, como el calculo de Gini,
+En esta sección del trabajo se realizó la creación de las funciones mas importantes para el arbol de decisión, como el calculo de Gini,
 selección de características y creación de los nodos y hojas, así como pruebas unitarias para esta función.
 
 \subsection{Calculo de Gini}\label{subsec:calculo-de-gini}
 
-Para el calculo de Gini se utilizo la siguiente función:
+Para el calculo de Gini se utilizó la siguiente función:
 
-    \begin{lstlisting}[language=Python, numbers=left,label={lst:lstlisting}]
-      def calculate_gini(self, data_partition_torch,
-       num_classes=2):
+    \begin{lstlisting}[language=Python, numbers=left,label={lst:lstlisting}, basicstyle=\ttfamily\tiny]
+      def calculate_gini(self, data_partition_torch, num_classes=2):
         if data_partition_torch.numel() == 0:
             return 0.0
 
-        class_counts =
-        torch.bincount(data_partition_torch, minlength=num_classes)
-        .float()
+        class_counts = torch.bincount(data_partition_torch, minlength=num_classes).float()
         proportions = class_counts / class_counts.sum()
         gini_score = 1.0 - torch.sum(proportions ** 2)
         return gini_score.item()
@@ -416,14 +416,13 @@ Para el calculo de Gini se utilizo la siguiente función:
 Esta función se encarga de calcular el coeficiente de Gini para una partición dada de un dataset y provista de un
 numero de clases, en nuestro caso se deja de defecto el numero dos dado que se trabaja con normal y backdoor.
 
-Se utiliza funciones de pytorch como `bincount' para contar las ocurrencias de cada clase en la partición y `sum' para obtener la suma de las ocurrencias,
-esto permite evitar el uso de bucles y se realiza una normalización matricial para obtener el resultado.
-Ademas de esto
-se implementan protecciones ante valores anómalos como un tensor vació para evitar divisiones por cero.
+Se utiliza funciones de pytorch como `bincount' para contar las ocurrencias de cada clase en la partición y `sum' para obtener la suma de las ocurrencias
+y sus proporciones al cuadrado, esto permite evitar el uso de bucles y se realiza una normalización matricial para obtener el resultado.
+Además de esto se implementan protecciones ante valores anómalos como un tensor vació para evitar divisiones por cero.
 
 Se realizan dos pruebas unitarias de esta manera:
 
-    \begin{lstlisting}[language=Python, numbers=left,label={lst:lstlisting2}]
+    \begin{lstlisting}[language=Python, numbers=left,label={lst:lstlisting2}, basicstyle=\ttfamily\small]
       node = NodeCart(num_classes=2)
       ones_tensor = torch.tensor([1, 1, 1, 1])
       gini = node.calculate_gini(ones_tensor, num_classes=2)
@@ -486,7 +485,7 @@ def select_best_feature_and_thresh(self, data_torch, num_classes=2):
 La función se encarga de buscar todas las características disponibles y considerar todos los umbrales posibles.
 Esta función utiliza solo bucles para iterar sobre las características y los umbrales posibles,
 para realizar las iteraciones de manera eficiente se utiliza indexación lógica para crear las mascaras.
-Ademas de eso también cuenta con medidas de protección ante división por cero o splits vacíos que no sirvan para el calculo.
+Además de eso también cuenta con medidas de protección ante división por cero o splits vacíos que no sirvan para el calculo.
 
 Por medio del calculo de gini y sus promedios ponderados se busca el mejor umbral para la característica y se devuelve el mejor gini, característica y threshold encontrado.
 
@@ -494,21 +493,21 @@ Por medio del calculo de gini y sus promedios ponderados se busca el mejor umbra
 
 Para el ponderado de Gini se utilizo la siguiente función:
 
-    \begin{lstlisting}[language=Python, numbers=left, basicstyle=\ttfamily\tiny,label={lst:lstlisting4}]
-  def weighted_gini(self, left_side, right_side, num_classes=2):
-        n = left_side.numel() + right_side.numel()
-        if n == 0:
-            return 0.0
-        gini_left = self.calculate_gini(left_side, num_classes)
-        gini_right = self.calculate_gini(right_side, num_classes)
-        return (left_side.numel() / n) * gini_left + (right_side.numel() / n) * gini_right
-    \end{lstlisting}
+\begin{lstlisting}[language=Python, numbers=left, basicstyle=\ttfamily\tiny,label={lst:lstlisting4}]
+def weighted_gini(self, left_side, right_side, num_classes=2):
+    n = left_side.numel() + right_side.numel()
+    if n == 0:
+        return 0.0
+    gini_left = self.calculate_gini(left_side, num_classes)
+    gini_right = self.calculate_gini(right_side, num_classes)
+    return (left_side.numel() / n) * gini_left + (right_side.numel() / n) * gini_right
+\end{lstlisting}
 
 Esta función calcula el gini ponderado por medio del uso de la función de calculo de gini mencionada anteriormente y el calculo mediante la formula
 de ponderado proporcionada.
 Se utiliza la función numel para obtener el numero de elementos de cada lado y se realiza la ponderación mediante la formula y los
 datos obtenidos de la puntuación gini y el total de elementos.
-Este recibe los datos de cada lado extraído de la función de selección de características.
+Este recibe los datos de cada lado extraído dentro de la función de selección de características.
 
 \subsection{Creación de Nodos y Hojas}\label{subsec:creacion-de-nodos-y-hojas}
 
@@ -563,24 +562,24 @@ Para la creación de nodos y hojas se utilizo la siguiente función:
 Esta función es la encargada de poder construir de manera recursiva el árbol de decisión, tiene dentro de ella
 la lógica para determinar por medio de un conjunto de datos si debe crear alguna hoja o un nodo hijo.
 
-Esta fase espera un tensor de pytorch la cual extrae la clase mas frecuente para usarla
+Esta fase espera un tensor de pytorch la cual extrae la clase más frecuente para usarla
 como clase dominante por medio de la función torch.mode
 y se calcula el gini para el nodo.
 
 Siguiendo con la función esta tiene como criterio de parada la profundidad máxima del arbol, si detecta un numero de muestras
 menor al esperado o si el gini ya es lo suficientemente bajo, esto hace que se prevenga el overfitting y terminar
-la función de una manera mas inteligente.
+la función de una manera más inteligente.
 
 Después de eso se busca la mejor partición mediante la búsqueda de la mejor característica y umbral, esta parte solo
 va seguir dividiendo si se encuentra una mejor puntuación de gini, en caso contrario de no mejorar
 se convierte en una hoja.
 
-Ademas de eso se guarda valores como la característica y el umbral para poder usarlos en el árbol de decisión, ademas de
-guardar una lista de las características seleccionadas para poder usarlas en el árbol de decisión.
+Además de eso se guarda valores como la característica y el umbral para poder usarlos en el árbol de decisión, y
+guarda una lista de las características seleccionadas para poder usarlas en el árbol de decisión en sus proximas etapas.
 
-Para las partes finales se realiza la indexación lógica para generar la partición de los datos correctamente, finalmente
-crean hijos si contiene algún dato, crea nuevos objetos NodeCart para cada hijo y se llama nuevamente a la misma función
-pero con un incremento de la profundidad, ademas de eso guarda todas las características utilizadas nuevamente
+En las partes finales se realiza la indexación lógica para generar la partición de los datos correctamente, se
+crean hijos si contiene algún dato, genera nuevos objetos NodeCart para cada hijo y se llama nuevamente a la misma función
+pero con un incremento de la profundidad, además de eso guarda todas las características utilizadas nuevamente
 y las retorna cuando ya se cumple la función.
 
 \subsection{Pruebas Unitarias}\label{subsec:pruebas-unitarias}
@@ -600,23 +599,23 @@ se espera que se encuentre el umbral y característica correctos y que el gini s
 Así como validar que no se encuentren valores inválidos.
 
 Para la función `test_select_best_feature_single_class' se busca el mejor umbral y característica para un tensor de una sola clase.
-Ya que es una muestra que no tiene separación ya que solo hay una clase se espera que no encuentre un posible umbral ni característica
+Ya que es una muestra que no tiene separación ya que solo hay una clase, se espera que no encuentre un posible umbral ni característica,
 o si lo encuentra que Gini sea cero o similar pero sin ningún tipo de mejora al tener solo una clase.
 
 Para la función `test_create_with_children_normal_splitting' se requiere construir correctamente un árbol con datos separables
 y que este realmente encuentre una solución.
-Para ello se provee de un tensor con clases distribuidas de igual manera, para validar
-el éxito se verificar si retorna una lista de características con al menos una, si el nodo raiz no es hoja,
+Para ello se provee de un tensor con clases distribuidas, para validar
+el éxito se verifica si retorna una lista de características con al menos una, si el nodo raiz no es hoja,
 si el nodo raíz tiene los valores de característica y umbral correctamente asignados y si existe algún hijo
 de cualquier lado.
 
 Para la función `test_create_with_children_min_gini_condition'
 se busca crear un árbol de decisión
 con un umbral minimo de gini, con el fin
-de verificar si el parámetro funciona correctamente, para ello se utiliza un tensor de la misma clase y una condición de parada mínima
+de verificar si el parámetro funciona correctamente. Para ello se utiliza un tensor de la misma clase y una condición de parada
 que debería activarse correctamente, en este caso no debería encontrar ningún nodo hijo y el nodo raíz debería ser una hoja,
 por lo que se espera que no devuelva características y que el Gini sea menor al umbral que fue pasado por parámetros, así como
-la clase dominante sea la correcta.
+la clase dominante sea la esperada.
 
 \subsection{Implementación de Test Cart}\label{subsec:implementacion-de-test-cart}
 
@@ -648,7 +647,7 @@ Para la implementación de test cart se utilizo la siguiente función:
 Esta función básicamente se encarga de evaluar el árbol de decisión con un conjunto de datos por medio del calculo de la métrica
 de accuracy. Para ello la función extrae las características del tensor y sus clases, luego se realiza un bucle para evaluar cada observación
 y se utiliza la función realizada en el código base `evaluate_input' para su evaluación, esta función se encarga de
-analizar si es un nodo hoja y retornar la clase dominante o si es interno evaluar a los diferentes hijos.
+analizar si es un nodo hoja y retornar la clase dominante o si es interno, evaluar a los diferentes hijos.
 Para calcular el accuracy se utiliza la división entre el numero de predicciones correctas y el numero total de predicciones.
 
 El accuracy lo que permite es medir el rendimiento del modelo y determinar si el árbol aprendió correctamente a poder clasificar
@@ -658,11 +657,11 @@ mas entrenamiento, datos o ajustes al árbol.
 Para las pruebas unitarias se realizaron dos las cuales fueron `test_cart_perfect_predictions' y `test_cart_invalid_dataset'.
 
 La función `test_cart_perfect_predictions' se genera un set de datos de entrenamiento y prueba los cuales están formulados para que el resultado
-para una puntuación alta. El código nada mas espera a que correctamente se devuelva algún accuracy entre o y 1, esperando que
+sea una puntuación alta. El código nada mas espera a que correctamente se devuelva algún accuracy entre cero y uno, esperando que
 funcione correctamente.
 
 La función `test_cart_invalid_dataset' lo que hace es por medio de un tensor con datos vacíos y uno con una sola observación,
-verificar que el accuracy de un dataset vació es 0 y que se maneje adecuadamente el caso de una sola observación por medio
+verificar que el accuracy de un dataset vació es cero y que se maneje adecuadamente el caso de una sola observación por medio
 de la verificación del accuracy retornado.
 
 \section{Evaluación de CART}\label{sec:evaluacion-de-cart}
@@ -670,6 +669,123 @@ de la verificación del accuracy retornado.
 En este apartado se realiza el entrenamiento y pruebas de un árbol de decisión con el dataset KD999 bajo diferentes parámetros.
 
 \subsection{Evaluación de máximo 3 y 4 nodos}\label{subsec:evaluacion-de-maximo-3-y-4-nodos}
+
+El código utilizado para esta implementación se encuentra a continuación:
+
+\begin{lstlisting}[language=Python, numbers=left, basicstyle=\ttfamily\tiny,label={lst:lstlisting9}]
+  def get_cart_kd99_dataset_tensor():
+    complete_dataset = pd.concat([df_no_attacks, df_attacks], ignore_index=True)
+
+    class_mapping = {'normal.': 0, 'back.': 1}
+    complete_dataset['outcome'] = complete_dataset['outcome'].map(class_mapping)
+
+    dataset_tensor = torch.tensor(complete_dataset.values, dtype=torch.float32)
+
+    print(f"\nDataset completo creado:")
+    print(f"- Total de observaciones: {dataset_tensor.shape[0]}")
+    print(f"- Numero de caracteristicas: {dataset_tensor.shape[1] - 1}")
+    print(f"- Observaciones normales: {len(df_no_attacks)}")
+    print(f"- Observaciones de backdoor: {len(df_attacks)}")
+    print(f"- Distribucion de clases: {complete_dataset['outcome'].value_counts().to_dict()}")
+
+    return dataset_tensor
+
+def calculate_f1_score(y_true, y_pred, num_classes=2, print_results=False):
+  f1_scores = []
+
+  for class_id in range(num_classes):
+      tp = torch.sum((y_true == class_id) & (y_pred == class_id)).float()
+      fp = torch.sum((y_true != class_id) & (y_pred == class_id)).float()
+      fn = torch.sum((y_true == class_id) & (y_pred != class_id)).float()
+
+      precision = tp / (tp + fp) if (tp + fp) > 0 else torch.tensor(0.0)
+      recall = tp / (tp + fn) if (tp + fn) > 0 else torch.tensor(0.0)
+
+      f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else torch.tensor(0.0)
+      f1_scores.append(f1.item())
+
+      if print_results:
+          class_name = "Normal" if class_id == 0 else "Backdoor"
+          print(f"- {class_name}: Precision={precision}, Recall={recall}, F1={f1}")
+
+  return sum(f1_scores) / len(f1_scores)
+
+  def evaluate_cart_complete(dataset_tensor, max_depth, min_observations=2):
+    print(f"\n# Evaluacion de CART con profundidad maxima = {max_depth}")
+
+    cart = CART(dataset_torch=dataset_tensor,
+                max_cart_depth=max_depth,
+                min_observations=min_observations)
+
+    start_time = time.time()
+    cart.build_cart(dataset_tensor)
+    training_time = time.time() - start_time
+
+    start_time = time.time()
+    features = dataset_tensor[:, :-1]
+    true_labels = dataset_tensor[:, -1].long()
+
+    predicted_labels = []
+    for i in range(features.shape[0]):
+        prediction = cart.evaluate_input(features[i])
+        predicted_labels.append(prediction)
+
+    predicted_labels = torch.tensor(predicted_labels)
+    evaluation_time = time.time() - start_time
+
+    accuracy = test_cart(cart, dataset_tensor)
+
+    print(f"Resultados por clase:")
+    f1_score = calculate_f1_score(true_labels, predicted_labels, num_classes=2, print_results=True)
+
+    print(f"\nResultados de corrida:")
+    print(f"- Accuracy: {accuracy} ({accuracy * 100}%)")
+    print(f"- F1-Score promedio: {f1_score}")
+    print(f"- Tiempo de entrenamiento: {training_time} segundos")
+    print(f"- Tiempo de evaluacion: {evaluation_time} segundos")
+    print(f"- Caracteristicas seleccionadas: {len(cart.list_selected_features)}")
+    print(f"- Features utilizadas: {cart.list_selected_features}")
+
+    return {
+        'accuracy': accuracy,
+        'f1_score': f1_score,
+        'training_time': training_time,
+        'evaluation_time': evaluation_time,
+        'selected_features': cart.list_selected_features,
+        'cart': cart
+    }
+
+print(f"Datos de dataframes originales:")
+print(f"- df_no_attacks (normal): {len(df_no_attacks)} observaciones")
+print(f"- df_attacks (backdoor): {len(df_attacks)} observaciones")
+print(f"- Clase en df_no_attacks: {df_no_attacks['outcome'].unique()}")
+print(f"- Clase en df_attacks: {df_attacks['outcome'].unique()}")
+
+complete_dataset = get_cart_kd99_dataset_tensor()
+
+results_depth_3 = evaluate_cart_complete(complete_dataset, max_depth=3, min_observations=2)
+results_depth_4 = evaluate_cart_complete(complete_dataset, max_depth=4, min_observations=2)
+
+print(f"\nComparacion de resultados:")
+print("=" * 60)
+print(f"{'Metrica':<25} {'Profundidad 3':<15} {'Profundidad 4':<15}")
+print("-" * 60)
+print(f"{'Accuracy':<25} {results_depth_3['accuracy']:<15.4f} {results_depth_4['accuracy']:<15.4f}")
+print(f"{'F1-Score':<25} {results_depth_3['f1_score']:<15.4f} {results_depth_4['f1_score']:<15.4f}")
+print(
+  f"{'Tiempo de Entrenamiento':<25} {results_depth_3['training_time']:<15.4f} {results_depth_4['training_time']:<15.4f}")
+print(
+  f"{'Tiempo de Evaluacion':<25} {results_depth_3['evaluation_time']:<15.4f} {results_depth_4['evaluation_time']:<15.4f}")
+print(
+  f"{'Features Seleccionadas':<25} {len(results_depth_3['selected_features']):<15}
+   {len(results_depth_4['selected_features']):<15}")
+
+print(f"\nResumen de mejores resultados:")
+mejor_accuracy = "Profundidad 3" if results_depth_3['accuracy'] > results_depth_4['accuracy'] else "Profundidad 4"
+mejor_f1 = "Profundidad 3" if results_depth_3['f1_score'] > results_depth_4['f1_score'] else "Profundidad 4"
+print(f"- Mejor Accuracy: {mejor_accuracy}")
+print(f"- Mejor F1-Score: {mejor_f1}")
+\end{lstlisting}
 
 Para esta prueba se desarrollo una implementación que genera nuevamente un dataset completo mediante la unión
 de los dataframes de ataque y normal.
@@ -685,14 +801,16 @@ Para realizar esta parte primero se obtuvo el conjunto de datos completo en la f
 que consiste de una union de los dataframes de ataque y normal, y
 el mapeo de las clases en valores numéricos para poder convertirlo en un tensor de pytorch.
 
-Para poder calcular el f1 score se utilizo la función `calculate_f1_score' la cual se encarga de calcular
-el f1 score para cada clase.
+Para poder calcular el F1 Score se utilizo la función `calculate_f1_score' la cual se encarga de calcular
+el F1 Score para cada clase.
 Esta función evalúa cada clase por separado y genera las métricas de precision, recall y f1 score.
 Siendo precisión la proporción de predicciones positivas, recall la proporción de casos positivos reales y el F1 siendo la media aritmética de precision y recall.
 Para finalmente calcular la media simple de los F1 Score de ambas clases.
 
 Para la función principal `evaluate_cart_complete' esta esta encargada de realizar la creación del árbol, entrenamiento, evaluación
-bajo el mismo dataset, las predicciones para cada observación y el calculo de las métricas de evaluación.
+bajo el mismo dataset, las predicciones para cada observación y el calculo de las métricas de evaluación. Esto es posible mediante
+la construcción del objeto CART, los metodos `build_cart', `evaluate_input' y la función `test_cart' para obtener el accuracy, finalmente
+se retorna las metricas obtenidas.
 
 A continuación se muestra los resultados de una prueba realizada en Google Colab:
 
@@ -758,25 +876,173 @@ A continuación se muestra los resultados de una prueba realizada en Google Cola
 De los resultados anteriores se puede observar el nuevo dataset que contiene un total de 88800 observaciones, 75 características y
 una distribución de clases de 87832 normales y 968 backdoor.
 
-Finalmente se pudo determinar que en esta ejecución la profundidad 4 contiene un mejor accuracy y f1 score, con un tiempo de entrenamiento
-de dos segundos mayor y un tiempo de evaluación similar, esto en contraste con la profundidad 3. Los resultados finalmente son muy similares,
-inclusive el accuracy llega a ser 1 en ambos y el F1 diverge por un valor mínimo. Sin embargo si utiliza mas features en la profundidad cuatro que en la tres.
-Ademas de eso el rendimiento es similar por lo que para este dataset es posible escoger elementos mas profundos ya que no existe una diferencia de rendimiento
+Finalmente se pudo determinar que en esta ejecución la profundidad cuatro contiene un mejor accuracy y F1 Score, con un tiempo de entrenamiento
+de dos segundos mayor y un tiempo de evaluación similar, esto en contraste con la profundidad tres. Los resultados finalmente son muy similares,
+inclusive el accuracy llega a ser 1 en ambos y el F1 diverge por un valor mínimo. Sin embargo si se utiliza más features en la profundidad cuatro que en la tres.
+Además de eso el rendimiento es similar por lo que para este dataset es posible escoger elementos mas profundos ya que no existe una diferencia de rendimiento
 grande que pueda justificar el uso de una profundidad menor, aunque es posible si es necesario ya que el rendimiento es muy similar y para datasets mayores podría ser
 beneficioso a nivel computacional usar una menor profundidad.
 
 Esta función nos permite ver que el árbol y sus funciones de entrenamiento, evaluación y métricas funcionan correctamente, generando
 datos útiles para poder mejorar el árbol y entender mejor que configuraciones y características son las mejores para este dataset, sin embargo se sabe que
-es necesario poder realizar un split para poder asegurar mejor su capacidad de generalización y concluir si existe overfitting o otros riesgos al árbol.
+es necesario poder realizar un split para poder asegurar su capacidad de generalización y concluir si existe overfitting o otros riesgos al árbol.
 
 \subsection{Evaluación de profundidad 2 y 3, con particiones de entrenamiento y prueba}\label{subsec:evaluacion-de-profundidad-2-y-3-con-particiones-de-entrenamiento-y-prueba}
+
+El código utilizado para esta implementación se encuentra a continuación:
+
+\begin{lstlisting}[language=Python, numbers=left, basicstyle=\ttfamily\tiny,label={lst:lstlisting10}]
+  def single_run_evaluation(dataset_tensor, max_depth, min_observations=2, random_state=None):
+    if random_state is not None:
+        torch.manual_seed(random_state)
+        np.random.seed(random_state)
+        random.seed(random_state)
+
+    data_np = dataset_tensor.numpy()
+    X = data_np[:, :-1]
+    y = data_np[:, -1]
+
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.3, random_state=random_state, stratify=y
+    )
+
+    train_tensor = torch.tensor(np.column_stack([X_train, y_train]), dtype=torch.float32)
+    test_tensor = torch.tensor(np.column_stack([X_test, y_test]), dtype=torch.float32)
+
+    cart = CART(dataset_torch=train_tensor,
+                max_cart_depth=max_depth,
+                min_observations=min_observations)
+
+    start_time = time.time()
+    cart.build_cart(train_tensor)
+    training_time = time.time() - start_time
+
+    start_time = time.time()
+    accuracy = test_cart(cart, test_tensor)
+
+    test_features = test_tensor[:, :-1]
+    true_labels = test_tensor[:, -1].long()
+
+    predicted_labels = []
+    for i in range(test_features.shape[0]):
+        prediction = cart.evaluate_input(test_features[i])
+        predicted_labels.append(prediction)
+
+    predicted_labels = torch.tensor(predicted_labels)
+    evaluation_time = time.time() - start_time
+
+    f1_score = calculate_f1_score(true_labels, predicted_labels, num_classes=2)
+
+    return {
+        'accuracy': accuracy,
+        'f1_score': f1_score,
+        'training_time': training_time,
+        'evaluation_time': evaluation_time,
+        'cart': cart,
+        'train_size': train_tensor.shape[0],
+        'test_size': test_tensor.shape[0]
+    }
+
+def evaluate_multiple_runs(dataset_tensor, max_depth, n_runs=10, min_observations=2):
+  print(f"\nEjecutando {n_runs} corridas con profundidad maxima = {max_depth}:")
+  results = []
+  best_f1_idx = 0
+  best_f1_score = -1
+
+  for run in range(n_runs):
+      print(f"- Corrida {run + 1}/{n_runs}...", end=" ")
+
+      result = single_run_evaluation(
+          dataset_tensor,
+          max_depth,
+          min_observations,
+          random_state=42 + run
+      )
+
+      results.append(result)
+
+      if result['f1_score'] > best_f1_score:
+          best_f1_score = result['f1_score']
+          best_f1_idx = run
+
+      print(f"Acc: {result['accuracy']}, F1: {result['f1_score']}")
+
+  accuracies = [r['accuracy'] for r in results]
+  f1_scores = [r['f1_score'] for r in results]
+  train_times = [r['training_time'] for r in results]
+  eval_times = [r['evaluation_time'] for r in results]
+
+  stats = {
+      'accuracy_mean': np.mean(accuracies),
+      'accuracy_std': np.std(accuracies),
+      'f1_mean': np.mean(f1_scores),
+      'f1_std': np.std(f1_scores),
+      'train_time_mean': np.mean(train_times),
+      'train_time_std': np.std(train_times),
+      'eval_time_mean': np.mean(eval_times),
+      'eval_time_std': np.std(eval_times),
+      'best_run_idx': best_f1_idx,
+      'best_cart': results[best_f1_idx]['cart'],
+      'all_results': results
+  }
+
+  return stats
+
+def display_results_table(stats_depth_2, stats_depth_3):
+  print(f"\nTabla de resultados(Promedio y Desviacion Estandar)")
+  print("=" * 80)
+  print(f"{'Metrica':<25} {'Profundidad 2':<35} {'Profundidad 3'}")
+  print("-" * 80)
+
+  print(f"{'Accuracy':<25} "
+        f"Promedio: {stats_depth_2['accuracy_mean']:.4f} y Desviacion: {stats_depth_2['accuracy_std']:.4f} "
+        f"Promedio: {stats_depth_3['accuracy_mean']:.4f} y Desviacion: {stats_depth_3['accuracy_std']:.4f}")
+
+  print(f"{'F1-Score':<25} "
+        f"Promedio: {stats_depth_2['f1_mean']:.4f} y Desviacion: {stats_depth_2['f1_std']:.4f} "
+        f"Promedio: {stats_depth_3['f1_mean']:.4f} y Desviacion: {stats_depth_3['f1_std']:.4f}")
+
+  print(f"{'Tiempo de entrenamiento':<25} "
+        f"Promedio: {stats_depth_2['train_time_mean']:.4f} y Desviacion: {stats_depth_2['train_time_std']:.4f} "
+        f"Promedio: {stats_depth_3['train_time_mean']:.4f} y Desviacion: {stats_depth_3['train_time_std']:.4f}")
+
+  print(f"{'Tiempo de evaluacion':<25} "
+        f"Promedio: {stats_depth_2['eval_time_mean']:.4f} y Desviacion: {stats_depth_2['eval_time_std']:.4f} "
+        f"Promedio: {stats_depth_3['eval_time_mean']:.4f} y Desviacion: {stats_depth_3['eval_time_std']:.4f}")
+
+def generate_tree_visualization(cart, filename):
+  xml_content = cart.to_xml(filename)
+  print(f"- XML de arbol guardado en el archivo: {filename}")
+  return xml_content
+
+stats_depth_2 = evaluate_multiple_runs(complete_dataset, max_depth=2, n_runs=10, min_observations=2)
+stats_depth_3 = evaluate_multiple_runs(complete_dataset, max_depth=3, n_runs=10, min_observations=2)
+
+display_results_table(stats_depth_2, stats_depth_3)
+
+print(f"\nMejores resultados:")
+print(f"- Profundidad 2: Corrida {stats_depth_2['best_run_idx'] + 1} (F1-Score: {stats_depth_2['f1_mean']})")
+print(f"- Profundidad 3: Corrida {stats_depth_3['best_run_idx'] + 1} (F1-Score: {stats_depth_3['f1_mean']})")
+
+best_depth = 2 if stats_depth_2['f1_mean'] > stats_depth_3['f1_mean'] else 3
+
+print(f"\nMejor profundidad general: {best_depth}")
+
+print(f"\nGuardando arboles")
+
+xml_file_depth_2 = f"mejor_arbol_profundidad_2.xml"
+xml_file_depth_3 = f"mejor_arbol_profundidad_3.xml"
+
+generate_tree_visualization(stats_depth_2['best_cart'], xml_file_depth_2)
+generate_tree_visualization(stats_depth_3['best_cart'], xml_file_depth_3)
+\end{lstlisting}
 
 Para esta prueba se dividió el dataset en un 70\% de entrenamiento y 30\% de prueba, esto con el fin de poder
 evaluar el árbol de decisión de una manera que se pueda comprobar su capacidad de generalización ante datos nunca antes vistos.
 
-Ademas se realizan pruebas con 10 particiones aleatorias del conjunto de datos para una mayor verificación y una profundidad máxima de 2 y 3 nodos
+Además se realizan pruebas con 10 particiones aleatorias del conjunto de datos para una mayor verificación y una profundidad máxima de 2 y 3 nodos
 con el fin de experimentar el rendimiento del árbol.
-También se reportan las métricas necesarias como accuracy, f1 score, tiempo de entrenamiento,
+También se reportan las métricas necesarias como accuracy, F1 Score, tiempo de entrenamiento,
 tiempo de evaluación, features seleccionadas y tiempo de ejecución, todo calculado por medio del promedio y la desviación estándar de todas las corridas.
 
 Se generaron archivos XML que contienen la estructura de los arboles de decisión para cada mejor corrida, esto con el fin de poder visualizarlos.
@@ -789,14 +1055,14 @@ La función va a poder partir los datos por medio de la librería SciKitLearn y 
 train_test_split, esto con el fin de poder obtener los datos de entrenamiento y prueba, se convierten en tensores y se
 llama a la función de `build_cart' y se construyen los objetos cart.
 Después de ello se llama a `test_cart' para poder obtener el accuracy de la corrida y finalmente se generan
-las predicciones para cada observación y se calcula el f1 score, también la función retorna todas las métricas y el árbol para guardarlo
+las predicciones para cada observación y se calcula el F1 Score, también la función retorna todas las métricas y el árbol para guardarlo
 para su uso posterior.
 
 En la función `evaluate_multiple_runs' se realiza el proceso de 10 corridas con diferentes particiones aleatorias del conjunto de datos,
 esta función orquesta el uso de la función `single_run_evaluation' y se guardan los resultados en una lista, ademas de eso se calcula el mejor f1 score
-gradualmente guardando el mejor f1 score y el indice de la corrida que lo genero, reportando las métricas principales en stdout.
-Esta función al terminar su corrida se genera una lista de los valores de accuracy, f1 y tiempos de evaluación y entrenamiento, generando los promedios y desviación de los
-datos guardados en estas listas, los resultados de la mejor corrida y todos los resultados.
+gradualmente guardando el mejor F1 Score y el indice de la corrida que lo genero, reportando las métricas principales en stdout.
+Esta función al terminar su corrida se genera una lista de los valores de accuracy, F1 y tiempos de evaluación y entrenamiento, generando los promedios y desviación de los
+datos guardados en estas listas, los resultados de la mejor corrida y todos los resultados generales.
 
 Finalmente el código en el notebook, se encarga de llamar a todas las funciones por medio de los parámetros requeridos como lo es
 la profundidad esperada y el numero de corridas, se genera una tabla donde se observan mejor los resultados y se guardan en un XML
@@ -850,8 +1116,10 @@ En el siguiente bloque se muestran los resultados de una prueba realizada en Goo
     \end{lstlisting}
 
 De los resultados anteriores se observa que después de todas las corridas el mejor resultado es al utilizar la profundidad 3,
-ya que este contiene el mejor accuracy y f1 score promedio, sin embargo como se puede ver los resultados entre utilizar
-profundidad 2 y 3 son muy similares.
+ya que este contiene el mejor accuracy y F1 Score promedio, sin embargo como se puede ver los resultados entre utilizar
+profundidad 2 y 3 son muy similares, y no hay presencia de overfitting dando a entender que si es posible disceminar
+entre tráfico normal y malicioso.
+La unica salvedad es que la profunidad 3 utiliza mas características que la 2.
 
 Estos resultados con un dataset de entrenamiento aparte indican que el modelo si podría tener un buen resultado al tratar de generalizar,
 ya que muchas corridas son casi perfectas y las validaciones generan muy poco margen de error.
@@ -925,16 +1193,20 @@ Finalmente se genero un archivo XML de ambos nodos, a continuación se presenta 
 </node>
     \end{lstlisting}
 
+El diagrama del árbol indica lo visto en los resultados, ya que es posible visualizar cuales features fueron
+seleccionados para los diferentes nodos y su relevancia, también viendo los diferentes calculos, se puede observar
+valores de Gini muy cercanos a cero, marcando que los splits son muy precisos.
+
 En base a este árbol y la pregunta sobre el uso de Jensen-Shannon.
 Se podría decir que al seguir los resultados previos de la tabla de distancias se podrían usar solo las
-características que demuestren una dentro de un threshold especifico podría reducir una gran cantidad de características,
+características que demuestren estar dentro de un rango específico y podrían reducir una gran cantidad de características,
 esto dando el beneficio de manejar menos características y por ende un menor tiempo de entrenamiento y evaluación, así como
 concentrarse en las características que realmente son relevantes para el modelo.
 
-También otro beneficio es que al utilizar las características mas significativas es posible que los splits sean mas precisos,
+También otro beneficio es que al utilizar las características mas significativas es posible que los splits sean mas precisos
 y se pueda tener una mejor solución al problema al encontrar los splits mas rápido y con menos profundidad.
 
-En el caso de la `early stopping' se puede utilizar esta distancia para determinar si es necesario seguir creando splits bajo características
+En el caso de realizar `early stopping' se puede utilizar esta distancia para determinar si es necesario seguir creando splits bajo características
 que no proveen una ganancia significativa, esto con el fin de evitar overfitting por ejemplo.
 
 Finalmente utilizar esta distancia de Jensen-Shannon podría proveer de arboles mas eficientes, simples, efectivos y enfocado
