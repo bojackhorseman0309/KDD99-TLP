@@ -610,7 +610,9 @@ el éxito se verificar si retorna una lista de características con al menos una
 si el nodo raíz tiene los valores de característica y umbral correctamente asignados y si existe algún hijo
 de cualquier lado.
 
-Para la función `test_create_with_children_min_gini_condition' se busca crear un árbol de decisión con un umbral minimo de gini, con el fin
+Para la función `test_create_with_children_min_gini_condition'
+se busca crear un árbol de decisión
+con un umbral minimo de gini, con el fin
 de verificar si el parámetro funciona correctamente, para ello se utiliza un tensor de la misma clase y una condición de parada mínima
 que debería activarse correctamente, en este caso no debería encontrar ningún nodo hijo y el nodo raíz debería ser una hoja,
 por lo que se espera que no devuelva características y que el Gini sea menor al umbral que fue pasado por parámetros, así como
