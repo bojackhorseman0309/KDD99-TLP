@@ -255,10 +255,10 @@ En este caso se podrían destacar los siguientes puntos a continuación.
 
 \begin{itemize}
   \item La media de `duration' en el set de tráfico normal es mucho mayor que en el set de ataque.
-    Indicando que las conexiones maliciosas son mucho mas cortas.
+    Indicando que las conexiones maliciosas son mucho más cortas.
   \item Los ataques de tipo `backdoor' envían una mayor cantidad de `src_bytes' y reciben una mayor cantidad de `dst_bytes' en promedio que las conexiones normales.
     Se podría decir que sugiere que los atacantes están enviando payloads maliciosos y extrayendo gran cantidad de datos.
-  \item Se puede observar como `logged_in' tiene una media de 1 en el set de ataque, lo que indica que las conexiones maliciosas se realizaron por medio de conexiones autenticadas.
+  \item Se puede observar como `logged_in' tiene una media de uno en el set de ataque, lo que indica que las conexiones maliciosas se realizaron por medio de conexiones autenticadas.
   \item En el tráfico normal, características como `hot' y `num_compromised' tienen una media baja, lo que indica que en la mayoría de las conexiones normales no se intentan realizar acciones sospechosas al contrario de las conexiones maliciosas.
   \item Curiosamente en características como `su_attempted' y `num_root' tienen una media mayor en el tráfico normal que en el tráfico malicioso.
     Lo que podría indicar que los atacantes no intentan escalar privilegios o que lo hacen por otros medios, siendo un posible punto a investigar ya que lo común sería observar intentos de escalamiento de privilegios en el tráfico malicioso.
@@ -267,34 +267,34 @@ En este caso se podrían destacar los siguientes puntos a continuación.
 \subsubsection{Desviación Estándar}
 
 \begin{itemize}
-  \item En una gran mayoría de características, la desviación estándar es baja en el lado del tráfico de ataques, indicando que son mas precisos y consistentes, dando paso a un patrón predecible para utilizar en un clasificador.
-    Los ataques normales si presentan una desviación que indica que sus valores están distribuidos de manera mas dispersa.
+  \item En una gran mayoría de características, la desviación estándar es baja en el lado del tráfico de ataques, indicando que son más precisos y consistentes, dando paso a un patrón predecible para utilizar en un clasificador.
+    Los ataques normales si presentan una desviación que indica que sus valores están distribuidos de manera más dispersa.
   \item En el lado normal es posible ver como casi ninguna desviación es 0, mientras que en el ataque existen una gran cantidad de características con valor de 0 o casi cero.
-  \item Se da una gran desviación en el tráfico normal en características como `duration', `src_bytes' y `dst_bytes', lo que indica que las conexiones normales tienen una mayor variabilidad en su duración y en la cantidad de datos enviados y recibidos, siendo mas `humana'.
+  \item Se da una gran desviación en el tráfico normal en características como `duration', `src_bytes' y `dst_bytes', lo que indica que las conexiones normales tienen una mayor variabilidad en su duración y en la cantidad de datos enviados y recibidos, siendo más `humana'.
 \end{itemize}
 
 \subsubsection{Inclinación}
 
 \begin{itemize}
-  \item En el tráfico normal existe una inclinación mucho mas positiva que el tráfico maliciosos, tendiendo a tener una cola hacia la derecha.
+  \item En el tráfico normal existe una inclinación mucho más positiva que el tráfico maliciosos, tendiendo a tener una cola hacia la derecha.
     Es posible ver eso en campos como `duration', `src_bytes' y `dst_bytes'.
-  \item En el tráfico malicioso, la inclinación tiende a ir cerca de cero o negativo, siendo distribuciones mas concentradas en comparación al tráfico normal.
+  \item En el tráfico malicioso, la inclinación tiende a ir cerca de cero o negativo, siendo distribuciones más concentradas en comparación al tráfico normal.
 \end{itemize}
 
 \subsubsection{Kurtosis}
 
 \begin{itemize}
-  \item El tráfico normal presenta una kurtosis alta en campos como `duration', `src_bytes' y `dst_bytes', lo que podría concluir que tiene picos mas agudos y valores dispersos.
-  \item El tráfico malicioso es mas uniforme ya que la kurtosis es mucho mas moderada.
+  \item El tráfico normal presenta una kurtosis alta en campos como `duration', `src_bytes' y `dst_bytes', lo que podría concluir que tiene picos más agudos y valores dispersos.
+  \item El tráfico malicioso es más uniforme ya que la kurtosis es mucho más moderada.
 \end{itemize}
 
 \subsubsection{Conclusiones}
 
 \begin{itemize}
-  \item Los ataques de tipo backdoor son mas constantes y precisos, sugiriendo que el tráfico se enfoca en realizar acciones por medio de automatizaciones y ataques similares generando un patrón que podría ser de uso para detectar ataques.
+  \item Los ataques de tipo backdoor son más constantes y precisos, sugiriendo que el tráfico se enfoca en realizar acciones por medio de automatizaciones y ataques similares generando un patrón que podría ser de uso para detectar ataques.
   \item Los ataques se concentran en áreas especificas por ejemplo el uso del servicio HTTP y protocolo TCP casi que exclusivamente siendo algo sospechoso al ver el tráfico normal y ver que utilizan una gran cantidad de servicios y protocolos.
-  \item El tráfico normal dada su distribución dispersa se podría concluir que es indicadora de ser mas `natural' y no parece generado por un atacante.
-  \item Existen campos como `duration', `src_bytes', `dst_bytes', `logged_in' y `num_compromised', ademas de los diferentes servicios y protocolos, que se presentan como los campos mas característicos por utilizar para poder realizar clasificaciones.
+  \item El tráfico normal dada su distribución dispersa se podría concluir que es indicadora de ser más `natural' y no parece generado por un atacante.
+  \item Existen campos como `duration', `src_bytes', `dst_bytes', `logged_in' y `num_compromised', ademas de los diferentes servicios y protocolos, que se presentan como los campos más característicos por utilizar para poder realizar clasificaciones.
   \item Dada la diferencia y patrones reconocibles entre los diferentes tráficos se podría decir que esto es un buen candidato para un algoritmo de clasificación, dados sus patrones marcados.
 \end{itemize}
 
@@ -320,7 +320,7 @@ A continuación se muestran unos ejemplos de los histogramas generados para los 
 
 \begin{figure}[htpb]
   \centering
-  \includegraphics[width=0.6\textwidth]{images/histogramas}
+  \includegraphics[width=0.4\textwidth]{images/histogramas}
   \caption{Histograma para el campo `duration', `src_bytes' y `dst_bytes'}\label{fig:figure}
 \end{figure}
 
@@ -387,15 +387,15 @@ del modelo sin pérdida de información relevante.
 \subsection{Conclusiones}\label{subsec:conclusiones}
 
 \begin{itemize}
-  \item Mediante los histogramas y la distancia Jensen-Shannon es posible identificar las características que deberían ser tomadas como prioridad para el árbol de decisión, ya que son las mas discriminativas.
+  \item Mediante los histogramas y la distancia Jensen-Shannon es posible identificar las características que deberían ser tomadas como prioridad para el árbol de decisión, ya que son las más discriminativas.
   \item Características con duración de cero pueden ser eliminadas ya que no son necesarias al ser idénticas en ambos conjuntos y no proveer de datos útiles para el entrenamiento.
   \item Utilizar las características con una distancia alta podrían ser útiles a usar como umbral ya que podrían separar mejor las clases.
-  \item Se denota que los ataques backdoor tienen como características mas distintivas el uso de servicios como HTTP y protocolos como TCP, así como el valor `hot' y indicadores de error.
+  \item Se denota que los ataques backdoor tienen como características más distintivas el uso de servicios como HTTP y protocolos como TCP, así como el valor `hot' y indicadores de error.
 \end{itemize}
 
 \section{Árbol de Decisión}\label{sec:arbol-de-decision}
 
-En esta sección del trabajo se realizó la creación de las funciones mas importantes para el arbol de decisión, como el calculo de Gini,
+En esta sección del trabajo se realizó la creación de las funciones más importantes para el arbol de decisión, como el calculo de Gini,
 selección de características y creación de los nodos y hojas, así como pruebas unitarias para esta función.
 
 \subsection{Calculo de Gini}\label{subsec:calculo-de-gini}
@@ -505,7 +505,7 @@ def weighted_gini(self, left_side, right_side, num_classes=2):
 
 Esta función calcula el gini ponderado por medio del uso de la función de calculo de gini mencionada anteriormente y el calculo mediante la formula
 de ponderado proporcionada.
-Se utiliza la función numel para obtener el numero de elementos de cada lado y se realiza la ponderación mediante la formula y los
+Se utiliza la función `numel' para obtener el numero de elementos de cada lado y se realiza la ponderación mediante la formula y los
 datos obtenidos de la puntuación gini y el total de elementos.
 Este recibe los datos de cada lado extraído dentro de la función de selección de características.
 
@@ -652,12 +652,12 @@ Para calcular el accuracy se utiliza la división entre el numero de prediccione
 
 El accuracy lo que permite es medir el rendimiento del modelo y determinar si el árbol aprendió correctamente a poder clasificar
 los casos que se le presenten, en caso contrario podría indicar overfitting, falta de entrenamiento o algún tipo de error que requiera
-mas entrenamiento, datos o ajustes al árbol.
+más entrenamiento, datos o ajustes al árbol.
 
 Para las pruebas unitarias se realizaron dos las cuales fueron `test_cart_perfect_predictions' y `test_cart_invalid_dataset'.
 
 La función `test_cart_perfect_predictions' se genera un set de datos de entrenamiento y prueba los cuales están formulados para que el resultado
-sea una puntuación alta. El código nada mas espera a que correctamente se devuelva algún accuracy entre cero y uno, esperando que
+sea una puntuación alta. El código nada más espera a que correctamente se devuelva algún accuracy entre cero y uno, esperando que
 funcione correctamente.
 
 La función `test_cart_invalid_dataset' lo que hace es por medio de un tensor con datos vacíos y uno con una sola observación,
@@ -879,7 +879,7 @@ una distribución de clases de 87832 normales y 968 backdoor.
 Finalmente se pudo determinar que en esta ejecución la profundidad cuatro contiene un mejor accuracy y F1 Score, con un tiempo de entrenamiento
 de dos segundos mayor y un tiempo de evaluación similar, esto en contraste con la profundidad tres. Los resultados finalmente son muy similares,
 inclusive el accuracy llega a ser 1 en ambos y el F1 diverge por un valor mínimo. Sin embargo si se utiliza más features en la profundidad cuatro que en la tres.
-Además de eso el rendimiento es similar por lo que para este dataset es posible escoger elementos mas profundos ya que no existe una diferencia de rendimiento
+Además de eso el rendimiento es similar por lo que para este dataset es posible escoger elementos más profundos ya que no existe una diferencia de rendimiento
 grande que pueda justificar el uso de una profundidad menor, aunque es posible si es necesario ya que el rendimiento es muy similar y para datasets mayores podría ser
 beneficioso a nivel computacional usar una menor profundidad.
 
@@ -1119,7 +1119,7 @@ De los resultados anteriores se observa que después de todas las corridas el me
 ya que este contiene el mejor accuracy y F1 Score promedio, sin embargo como se puede ver los resultados entre utilizar
 profundidad 2 y 3 son muy similares, y no hay presencia de overfitting dando a entender que si es posible disceminar
 entre tráfico normal y malicioso.
-La unica salvedad es que la profunidad 3 utiliza mas características que la 2.
+La unica salvedad es que la profunidad 3 utiliza más características que la 2.
 
 Estos resultados con un dataset de entrenamiento aparte indican que el modelo si podría tener un buen resultado al tratar de generalizar,
 ya que muchas corridas son casi perfectas y las validaciones generan muy poco margen de error.
@@ -1203,12 +1203,12 @@ características que demuestren estar dentro de un rango específico y podrían 
 esto dando el beneficio de manejar menos características y por ende un menor tiempo de entrenamiento y evaluación, así como
 concentrarse en las características que realmente son relevantes para el modelo.
 
-También otro beneficio es que al utilizar las características mas significativas es posible que los splits sean mas precisos
-y se pueda tener una mejor solución al problema al encontrar los splits mas rápido y con menos profundidad.
+También otro beneficio es que al utilizar las características más significativas es posible que los splits sean más precisos
+y se pueda tener una mejor solución al problema al encontrar los splits más rápido y con menos profundidad.
 
 En el caso de realizar `early stopping' se puede utilizar esta distancia para determinar si es necesario seguir creando splits bajo características
 que no proveen una ganancia significativa, esto con el fin de evitar overfitting por ejemplo.
 
-Finalmente utilizar esta distancia de Jensen-Shannon podría proveer de arboles mas eficientes, simples, efectivos y enfocado
-en las características mas relevantes para la tarea.
+Finalmente utilizar esta distancia de Jensen-Shannon podría proveer de arboles más eficientes, simples, efectivos y enfocado
+en las características más relevantes para la tarea.
 \end{document}

@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1756041500.72078 "/Users/aaraya/git/KDD99-TLP/analisis/Analisis_TLP1.tex" "Analisis_TLP1.pdf" "Analisis_TLP1" 1756041501.40489 0
-  "/Users/aaraya/git/KDD99-TLP/analisis/Analisis_TLP1.tex" 1756041500.52032 62857 123015f6972cf811edc097588248b171 ""
+["pdflatex"] 1756059003.55521 "/Users/aaraya/git/KDD99-TLP/docs_trabajo/Analisis_TLP1.tex" "Analisis_TLP1.pdf" "Analisis_TLP1" 1756059004.24703 0
+  "/Users/aaraya/git/KDD99-TLP/docs_trabajo/Analisis_TLP1.tex" 1756059003.35372 62885 b077d5ccd6d30577886f10c6afaf17f0 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/courier/pcrb7t.tfm" 1136768653 960 4ab65358b8406f30ef5496c8c096d22b ""
@@ -117,9 +117,9 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1753314414 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "Analisis_TLP1.aux" 1756041501.3579 6555 67e6d02c349eab5fb014aee82add0863 "pdflatex"
-  "Analisis_TLP1.out" 1756041501.35924 3840 cb2397b60963e7054f7eb8678e785102 "pdflatex"
-  "Analisis_TLP1.tex" 1756041500.52032 62857 123015f6972cf811edc097588248b171 ""
+  "Analisis_TLP1.aux" 1756059004.20359 6553 6a91a0f32d3db4ef543e4c896a11236b "pdflatex"
+  "Analisis_TLP1.out" 1756059004.20498 3840 cb2397b60963e7054f7eb8678e785102 "pdflatex"
+  "Analisis_TLP1.tex" 1756059003.35372 62885 b077d5ccd6d30577886f10c6afaf17f0 ""
   "images/histogramas.png" 1755993512.72348 73705 99e0e05841a5d066eb0a654aefb94f5a ""
   (generated)
   "Analisis_TLP1.aux"

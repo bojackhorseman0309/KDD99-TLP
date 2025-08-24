@@ -1,8 +1,8 @@
-PWD /Users/aaraya/git/KDD99-TLP/analisis
+PWD /Users/aaraya/git/KDD99-TLP/docs_trabajo
 INPUT /usr/local/texlive/2025/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/aaraya/git/KDD99-TLP/analisis/Analisis_TLP1.tex
+INPUT /Users/aaraya/git/KDD99-TLP/docs_trabajo/Analisis_TLP1.tex
 OUTPUT Analisis_TLP1.log
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
