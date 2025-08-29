@@ -1,0 +1,539 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{palatino}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children no
+\language spanish
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style swiss
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Analisis de Datos para Ciberseguridad:
+ Trabajo práctico 2
+\end_layout
+
+\begin_layout Author
+Ph.
+ D.
+ Saúl Calderón Ramírez 
+\begin_inset Newline newline
+\end_inset
+
+Instituto Tecnológico de Costa Rica,
+ 
+\begin_inset Newline newline
+\end_inset
+
+Escuela de Ingeniería en Computación,
+ Programa de Ciencias de Datos,
+\begin_inset Newline newline
+\end_inset
+
+PAttern Recongition and MAchine Learning Group (PARMA-Group)
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Fecha de entrega:
+
+\series default
+ Domingo 14 de Setiembre.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Entrega
+\series default
+:
+ Un archivo .zip con el código fuente LaTeX o Lyx,
+ el pdf,
+ y un notebook Jupyter,
+ debidamente documentado.
+ A través del TEC-digital.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Modo de trabajo
+\series default
+:
+ Grupos de 3 personas.
+\end_layout
+
+\begin_layout Abstract
+En el presente trabajo práctico se introducir los arboles de decision por medio de su implementación para resolver un problema práctico en ciberseguridad.
+ 
+\end_layout
+
+\begin_layout Standard
+En el presente trabajo practico se utilizara el 
+\emph on
+dataset KDD99 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html
+\end_layout
+
+\end_inset
+
+.
+
+\emph default
+ El conjunto de datos KDD 1999 es uno de los más utilizados para entrenar y evaluar sistemas de detección de intrusos (IDS).
+ Está basado en simulaciones de tráfico de red en un entorno militar y contiene conexiones etiquetadas como normales o como uno de varios tipos de ataques.
+\end_layout
+
+\begin_layout Enumerate
+Categorías de características (features):
+ Las 41 características del dataset se dividen en cuatro grupos principales:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Características básicas (Basic features):
+ Información general de la conexión como duración,
+ protocolo,
+ servicio,
+ estado de la conexión.
+ Ejemplos:
+ duration,
+ protocol_type,
+ service,
+ flag.
+\end_layout
+
+\begin_layout Enumerate
+Características de contenido (Content features):
+ Analizan el contenido de la conexión para detectar intentos de acceso no autorizado.
+ Ejemplos:
+ num_failed_logins,
+ logged_in,
+ root_shell,
+ num_compromised.
+\end_layout
+
+\begin_layout Enumerate
+Características de tráfico basado en tiempo (Time-based traffic features):
+ Estadísticas de conexiones en una ventana de tiempo (por ejemplo,
+ en los últimos 2 segundos).
+ Ejemplos:
+ count,
+ srv_count,
+ serror_rate,
+ srv_serror_rate.
+\end_layout
+
+\begin_layout Enumerate
+Características de tráfico basado en host (Host-based traffic features):
+ Estadísticas de conexiones hacia el mismo host en una ventana más amplia.- Ejemplos:
+ dst_host_count,
+ dst_host_srv_count,
+ dst_host_same_srv_rate.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Las conexiones se etiquetan como normales o como uno de los siguientes tipos de ataque:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+DoS (Denial of Service):
+ Saturar el sistema para que no responda a usuarios legítimos.
+ Ej:
+ smurf,
+ neptune.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Probe:
+ Recolección de información sobre la red.
+ Ej:
+ satan,
+ portsweep.
+ 
+\end_layout
+
+\begin_layout Enumerate
+R2L (Remote to Local):
+ Acceso no autorizado desde una máquina remota.
+ Ej:
+ guess_passwd,
+ warezclient.
+ 
+\end_layout
+
+\begin_layout Enumerate
+U2R (User to Root):
+ Escalada de privilegios desde una cuenta local.
+ Ej:
+ buffer_overflow,
+ rootkit.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Para el presente trabajo practico se usaran todas las caracteristicas para estimar las 21 categorias de ataque o normalidad del mensaje.
+ Como preprocesamiento,
+ se incluye la conversion de atributos nominales a numericos,
+ y la eliminacion de registros faltantes y redudantes.
+\end_layout
+
+\begin_layout Section
+(30 puntos) Implementacion de un arbol de decision y random forests para clasificar todos los tipos de ataques (scikit learn)
+\end_layout
+
+\begin_layout Enumerate
+Genere una funcion 
+\emph on
+split_dataset 
+\emph default
+la cual divida los datos en entrenamiento (70%),
+ validacion (15 %) y prueba (15%).
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+(15 puntos) 
+\series default
+Entrene un arbol de decision (de 
+\emph on
+scikitlearn
+\emph default
+) para clasificar los ataques en todas las categorias originales del dataset:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Optimice la profundidad maxima,
+ cantidad minima de observaciones por particion,
+ y el criterio de pureza usando 
+\emph on
+optuna o weights and biases.
+ 
+\emph default
+Documente los rangos de cada hiper-parametro y justifique la decision por cada uno.
+
+\emph on
+ 
+\emph default
+Muestre los graficos de ese proceso de optimizacion y seleccione las 3 mejores arquitecturas.
+\end_layout
+
+\begin_layout Enumerate
+Compare las tres mejores arquitecturas,
+ para al menos 10 corridas diferentes (particiones),
+ el F1-score promedio para todas las clases y la tasa de falsos positivos promedio para todas las clases,
+ presente medias y desviaciones estandar usando la particion de prueba.
+ Comente los resultados.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+(15 puntos) 
+\series default
+Usando tambien la libreria 
+\emph on
+scikit learn 
+\emph default
+entrene un 
+\emph on
+random forest.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Optimice con optuna o weights and biases la cantidad de arboles del 
+\emph on
+random forest
+\emph default
+.
+ Defina el rango de numero de arboles de decision de forma justificada.
+\end_layout
+
+\begin_layout Enumerate
+Compare los 2 mejores 
+\emph on
+random forests 
+\emph default
+seleccionados por la herramienta,
+ haciendo 10 corridas diferentes (particiones),
+ el F1-score promedio para todas las clases y la tasa de falsos positivos promedio para todas las clases,
+ presente medias y desviaciones estandar usando la particion de prueba.
+ Comente los resultados.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+(30 puntos) Implementacion de una red neuronal para la clasificacion de todos los tipos de ataques (pytorch)
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+(10 puntos)
+\series default
+ Implemente la clase 
+\emph on
+FCN 
+\emph default
+la cual implemente una red de 4 capas en pytorch,
+ y defina la mejor arquitectura posible según las restricciones del problema,
+ de forma justificada.
+ Justifique que funciones de activación son las más pertinentes para el problema.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Use en tal arquitectura la cantidad de neuronas/capas que usted desee,
+ y como funciones de activacion,
+ en las capas intermedias funciones de activacion ReLU,
+ en la capa de salida la funcion de activacion 
+\emph on
+softmax .
+\end_layout
+
+\begin_layout Enumerate
+Implemente la funcion 
+\emph on
+train_fcn 
+\emph default
+la cual tome el modelo previamente creado y el conjunto de datos de entrenamiento,
+ y entrene tal modelo:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Usando 
+\emph on
+optuna 
+\emph default
+o 
+\emph on
+weights and biases
+\emph default
+,
+ calibre el coeficiente de aprendizaje.
+ Muestre las graficas de calibracion e indique el coeficiente de aprendizaje.
+\end_layout
+
+\begin_layout Enumerate
+Pruebe al menos 3 variantes posibles de arquitectura (justifique la decision de cada aspecto usando articulos de referencia de ser posible),
+ y muestre la grafica del error de entrenamiento y validacion,
+ para justificar la seleccion del modelo propuesto.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+(10 puntos)
+\series default
+ Implemente la funcion 
+\emph on
+evaluate_fcn 
+\emph default
+la cual para la particion de datos de prueba compute la tasa de aciertos,
+ el f1-score promediado,
+ y ademas muestre la matriz de confusion.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Evalue los 3 modelos propuestos anteriormente,
+ realizando al menos 10 particiones aleatorias de entrenamiento y prueba,
+ y presenta una tabla con todos los resultados,
+ media y desviacion estandar del F1-score y la tasa de falsos negativos promedio,
+ de cada modelo propuesto.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+(5 puntos)
+\series default
+ En la funcion 
+\emph on
+train_fcn 
+\emph default
+implemente el pesado por cantidad de observaciones por clase comentado en clase,
+ donde se le de un peso mayor a las observaciones de las clases sub-representadas.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Compare la mejor arquitectura seleccionada en el proceso anterior usando y no usando el pesado de la funcion de perdida realizando al menos 10 particiones aleatorias de entrenamiento y prueba,
+ y presenta una tabla con todos los resultados,
+ media y desviacion estandar de cada modelo propuesto.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+(5 puntos)
+\series default
+ Compare todos los metodos implementados usando como referencia los resultados.
+ Argumente las ventajas y desventajas de cada uno para justificar la decision del mejor modelo.
+\end_layout
+
+\begin_layout Section
+(15 puntos extra) Implementacion de una TabNet para la clasificacion de todos los tipos de ataques (pytorch)
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+(5 puntos)
+\series default
+Investigue y explique como funciona la arquitectura TabNet para clasificar datos estructuradores,
+ usando como referencia inicial el articulo 
+\emph on
+Tabnet:
+ Attentive interpretable tabular learning
+\emph default
+.
+ Base su investigacion a articulos recientes publicados en conferencias y revistas,
+ y use el diagrama de la arquitectura para explicar su funcionamiento.
+ Argumente sus ventajas para la clasificacion de datos estructurados.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+(15 puntos)
+\series default
+ Seleccione de forma justificada los hiper-parametros mas relevantes para TabNet,
+ y calibrelos con 
+\emph on
+optuna 
+\emph default
+o 
+\emph on
+weights and biases
+\emph default
+.
+ Seleccione las 2 mejores configuraciones usando como base los graficos generados en la calibracion.
+ Guarde los parametros de los 2 mejores modelos para facilitar la evaluacion de modelos que tardan mucho en su entrenamiento.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Evalue los 2 modelos propuestos anteriormente,
+ cada uno con y sin el pesado de las observaciones segun la prevalencia de su clase,
+ implementado en la seccion anterior (4 modelos en total),
+ realizando al menos 10 particiones aleatorias de entrenamiento y prueba,
+ y presenta una tabla con todos los resultados,
+ media y desviacion estandar del F1-score y la tasa de falsos negativos promedio,
+ de cada modelo propuesto.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Comente los resultados,
+ y exponga las ventajas y desventajas de este modelo con los anteriormente probados.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_body
+\end_document
