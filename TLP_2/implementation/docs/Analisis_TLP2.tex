@@ -244,12 +244,82 @@ por lo que esta metrica permite dar importancia a todas las clases y no solo a a
 en este conjunto. Otras metricas como el accuracy podrian creer que es un buen modelo para cierto tipo de ataques
 pero podria estar sesgado y otras clases podrian no ser detectadas correctamente con un rendimiento pobre.
 
-\paragraph{Proceso de Optimizacion}
+\paragraph{Resultados y Proceso de Optimizacion}
 
-Para documentar el proceso de optimizacion se generaron distintos graficos que permiten ver la evolucion de cada estudio
-realizado y la evolucion de los parametros, en especial de la metrica maximizada que fue el F1-Score.
+Para documentar el proceso de optimizacion se generaron distintos graficos y tablas que permiten observar la evolucion de cada estudio
+realizado y la evolucion de los parametros, en especial de la metrica maximizada que fue el F1-Score, estos
+graficos fueron provistos por la libreria Optuna por medio de su modulo optuna.visualization.
 
-Para ello se generaron cuatro graficos mostrados en la Figura X, que serian la historia de optimizacion del F1-Score,
-la distribucion de las F1-Score, importancia de los hiperparametros y una comparacion de las tres mejores arquitecturas por F1-Score.
+Los datos de los resultados finales se muestran en el Cuadro 3, 4 y 5, mostrado a continuación:
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{l c}
+    \hline
+    Métrica & Valor \\
+    \hline
+    Número total de trials & 100 \\
+    Mejor F1-macro & 0.8092 \\
+    \hline
+  \end{tabular}
+  \caption{Resumen de la optimización con Optuna}
+  \label{tab:optuna_resumen}
+\end{table}
+
+En el Cuadro 3 se observa como para 100 corridas de Optuna se obtuvo un mejor F1-Score de 0.8092,
+siendo este un buen resultado al ser cercano al 1. Ejecuciones mas largas mostraron resultados similares
+por lo que se justifica el uso de 100 corridas para ahorrar computo y tiempo.
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{l c}
+    \hline
+    Hiperparámetro & Valor \\
+    \hline
+    max\_depth & 17 \\
+    min\_samples\_split & 7 \\
+    min\_samples\_leaf & 1 \\
+    criterion & gini \\
+    \hline
+  \end{tabular}
+  \caption{Mejores hiperparámetros (según el mejor F1-macro)}
+  \label{tab:optuna_mejores_hparams}
+\end{table}
+
+En el Cuadro 4 podemos determinar que los rangos utilizados para los parametros tienen sentido,
+dado que finalmente el max_depth se obtuvo un valor de 17, siendo este un valor alto pero no llegando al limite de 20.
+El min_samples_split se obtuvo un valor de 7, siendo este un valor medio en el rango utilizado.
+El min_samples_leaf se obtuvo un valor de 1 utilizando el minimo valor del rango.
+El criterion finalmente se utilizo gini como el mejor criterio, siendo este rapido y adecuado para la tarea.
+
+\begin{table}[htbp]
+  \centering
+  \small
+  \begin{tabular}{c c c c c c}
+    \hline
+    Arquitectura & F1-macro & max\_depth & min\_samples\_split & min\_samples\_leaf & criterion \\
+    \hline
+    1 & 0.8092 & 17 & 7  & 1 & gini \\
+    2 & 0.7877 & 13 & 11 & 1 & gini \\
+    3 & 0.7877 & 13 & 11 & 1 & gini \\
+    \hline
+  \end{tabular}
+  \caption{Tres mejores arquitecturas encontradas}
+  \label{tab:optuna_top3}
+\end{table}
+
+En el Cuadro 5 se muestran las tres mejores arquitecturas para el estudio realizado. Se observa que el criterio de
+gini es el mas determinante para este problema, asi como el min_samples_leaf con su valor de 1. Ademas se observa que el
+valor de max_depth y min_samples_split son similares pero tienden a variar un poco entre los modelos.
+
+Para mostrar los resultados de la evolucion de la optimizacion se generaron distintos graficos mostrados en la Figuras X,
+que serian la historia de optimizacion del F1-Score, importancia de los hiperparametros,
+relaciones entre parametros, distribuciones de los valores objetivo y una comparacion de las tres mejores arquitecturas por F1-Score.
+
+% \begin{figure}[htpb]
+%   \centering
+%   \includegraphics[width=0.4\textwidth]{img/Optimization}
+%   \caption{Histograma para el campo `duration', `src_bytes' y `dst_bytes'}\label{fig:figure}
+% \end{figure}
 
 \end{document}
