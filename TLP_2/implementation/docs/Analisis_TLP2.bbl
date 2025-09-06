@@ -1,0 +1,374 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{aznarDecisionTreesGini2020}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=6043d78a8a4d74b057ecd625ffe36dbb}{%
+           family={Aznar},
+           familyi={A\bibinitperiod},
+           given={Pablo},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Quantdare}%
+      }
+      \strng{namehash}{6043d78a8a4d74b057ecd625ffe36dbb}
+      \strng{fullhash}{6043d78a8a4d74b057ecd625ffe36dbb}
+      \strng{fullhashraw}{6043d78a8a4d74b057ecd625ffe36dbb}
+      \strng{bibnamehash}{6043d78a8a4d74b057ecd625ffe36dbb}
+      \strng{authorbibnamehash}{6043d78a8a4d74b057ecd625ffe36dbb}
+      \strng{authornamehash}{6043d78a8a4d74b057ecd625ffe36dbb}
+      \strng{authorfullhash}{6043d78a8a4d74b057ecd625ffe36dbb}
+      \strng{authorfullhashraw}{6043d78a8a4d74b057ecd625ffe36dbb}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{What is the difference between gini or entropy criteria when using decision trees? In this post, both of them are compared.}
+      \field{day}{2}
+      \field{hour}{7}
+      \field{langid}{british}
+      \field{minute}{34}
+      \field{month}{12}
+      \field{second}{40}
+      \field{shorttitle}{Decision {{Trees}}}
+      \field{timezone}{Z}
+      \field{title}{Decision {{Trees}}: {{Gini}} vs {{Entropy}} ⋆ {{Quantdare}}}
+      \field{urlday}{6}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /Users/aaraya/Zotero/storage/RYAQYXWG/decision-trees-gini-vs-entropy.html
+      \endverb
+      \verb{urlraw}
+      \verb https://quantdare.com/decision-trees-gini-vs-entropy/
+      \endverb
+      \verb{url}
+      \verb https://quantdare.com/decision-trees-gini-vs-entropy/
+      \endverb
+    \endentry
+    \entry{christinaellisMaxDepthRandom2022}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=3c20b3c558c5e64b3275f99ba882d613}{%
+           family={{Christina Ellis}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Crunching the Data}%
+      }
+      \strng{namehash}{3c20b3c558c5e64b3275f99ba882d613}
+      \strng{fullhash}{3c20b3c558c5e64b3275f99ba882d613}
+      \strng{fullhashraw}{3c20b3c558c5e64b3275f99ba882d613}
+      \strng{bibnamehash}{3c20b3c558c5e64b3275f99ba882d613}
+      \strng{authorbibnamehash}{3c20b3c558c5e64b3275f99ba882d613}
+      \strng{authornamehash}{3c20b3c558c5e64b3275f99ba882d613}
+      \strng{authorfullhash}{3c20b3c558c5e64b3275f99ba882d613}
+      \strng{authorfullhashraw}{3c20b3c558c5e64b3275f99ba882d613}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{28}
+      \field{month}{8}
+      \field{title}{Max Depth in Random Forests}
+      \field{type}{Blog}
+      \field{urlday}{5}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
+      \field{year}{2022}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://crunchingthedata.com/max-depth-in-random-forests/
+      \endverb
+      \verb{url}
+      \verb https://crunchingthedata.com/max-depth-in-random-forests/
+      \endverb
+    \endentry
+    \entry{ConfigureDecisionTreeClassifierMin_samples_leaf}{online}{}{}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labeltitlesource}{title}
+      \field{title}{Configure {{DecisionTreeClassifier}} "Min\_samples\_leaf" {{Parameter}} | {{SKLearner}}}
+      \field{urlday}{6}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /Users/aaraya/Zotero/storage/ZPXL4HCW/sklearn-decisiontreeclassifier-min_samples_leaf-parameter.html
+      \endverb
+      \verb{urlraw}
+      \verb https://sklearner.com/sklearn-decisiontreeclassifier-min_samples_leaf-parameter/
+      \endverb
+      \verb{url}
+      \verb https://sklearner.com/sklearn-decisiontreeclassifier-min_samples_leaf-parameter/
+      \endverb
+    \endentry
+    \entry{gibbinsVisualGuideTuning2025}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=f131d3c06b89209c683b5b851deaa25b}{%
+           family={Gibbins},
+           familyi={G\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Towards Data Science}%
+      }
+      \strng{namehash}{f131d3c06b89209c683b5b851deaa25b}
+      \strng{fullhash}{f131d3c06b89209c683b5b851deaa25b}
+      \strng{fullhashraw}{f131d3c06b89209c683b5b851deaa25b}
+      \strng{bibnamehash}{f131d3c06b89209c683b5b851deaa25b}
+      \strng{authorbibnamehash}{f131d3c06b89209c683b5b851deaa25b}
+      \strng{authornamehash}{f131d3c06b89209c683b5b851deaa25b}
+      \strng{authorfullhash}{f131d3c06b89209c683b5b851deaa25b}
+      \strng{authorfullhashraw}{f131d3c06b89209c683b5b851deaa25b}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{How hyperparameter tuning visually changes decision trees}
+      \field{day}{28}
+      \field{hour}{13}
+      \field{langid}{american}
+      \field{minute}{5}
+      \field{month}{8}
+      \field{second}{0}
+      \field{timezone}{Z}
+      \field{title}{A {{Visual Guide}} to {{Tuning Decision-Tree Hyperparameters}}}
+      \field{urlday}{6}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /Users/aaraya/Zotero/storage/LHWRNWB7/visualising-decision-trees.html
+      \endverb
+      \verb{urlraw}
+      \verb https://towardsdatascience.com/visualising-decision-trees/
+      \endverb
+      \verb{url}
+      \verb https://towardsdatascience.com/visualising-decision-trees/
+      \endverb
+    \endentry
+    \entry{mDecisionTreesSplit2024}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=06033bce4722ca22bbcdfe730c8ece8e}{%
+           family={M},
+           familyi={M\bibinitperiod},
+           given={Badrinarayan},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Analytics Vidhya}%
+      }
+      \strng{namehash}{06033bce4722ca22bbcdfe730c8ece8e}
+      \strng{fullhash}{06033bce4722ca22bbcdfe730c8ece8e}
+      \strng{fullhashraw}{06033bce4722ca22bbcdfe730c8ece8e}
+      \strng{bibnamehash}{06033bce4722ca22bbcdfe730c8ece8e}
+      \strng{authorbibnamehash}{06033bce4722ca22bbcdfe730c8ece8e}
+      \strng{authornamehash}{06033bce4722ca22bbcdfe730c8ece8e}
+      \strng{authorfullhash}{06033bce4722ca22bbcdfe730c8ece8e}
+      \strng{authorfullhashraw}{06033bce4722ca22bbcdfe730c8ece8e}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Explore Decision Trees: Split Methods \& Hyperparameter Tuning for effective data analysis and model optimization.}
+      \field{day}{26}
+      \field{hour}{10}
+      \field{langid}{english}
+      \field{minute}{56}
+      \field{month}{3}
+      \field{second}{29}
+      \field{shorttitle}{Decision {{Trees}}}
+      \field{timezone}{Z}
+      \field{title}{Decision {{Trees}}: {{Split Methods}} \& {{Hyperparameter Tuning}}}
+      \field{urlday}{6}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.analyticsvidhya.com/blog/2024/03/decision-trees-split-methods-hyperparameter-tuning/
+      \endverb
+      \verb{url}
+      \verb https://www.analyticsvidhya.com/blog/2024/03/decision-trees-split-methods-hyperparameter-tuning/
+      \endverb
+    \endentry
+    \entry{raschkaWhyAreWe0000}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=bb679961e3f3f4bba79fc1cf3aa7df1c}{%
+           family={Raschka},
+           familyi={R\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Sebastian Raschka, PhD}%
+      }
+      \strng{namehash}{bb679961e3f3f4bba79fc1cf3aa7df1c}
+      \strng{fullhash}{bb679961e3f3f4bba79fc1cf3aa7df1c}
+      \strng{fullhashraw}{bb679961e3f3f4bba79fc1cf3aa7df1c}
+      \strng{bibnamehash}{bb679961e3f3f4bba79fc1cf3aa7df1c}
+      \strng{authorbibnamehash}{bb679961e3f3f4bba79fc1cf3aa7df1c}
+      \strng{authornamehash}{bb679961e3f3f4bba79fc1cf3aa7df1c}
+      \strng{authorfullhash}{bb679961e3f3f4bba79fc1cf3aa7df1c}
+      \strng{authorfullhashraw}{bb679961e3f3f4bba79fc1cf3aa7df1c}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Before we get to the main question – the real interesting part – let’s take a look at some of the (classification) decision tree basics to make sure that we ...}
+      \field{langid}{english}
+      \field{title}{Why Are We Growing Decision Trees via Entropy Instead of the Classification Error?}
+      \field{urlday}{6}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
+      \field{year}{16:16:20 +0000}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /Users/aaraya/Zotero/storage/YBBX6C39/decisiontree-error-vs-entropy.html
+      \endverb
+      \verb{urlraw}
+      \verb https://sebastianraschka.com/faq/docs/decisiontree-error-vs-entropy.html
+      \endverb
+      \verb{url}
+      \verb https://sebastianraschka.com/faq/docs/decisiontree-error-vs-entropy.html
+      \endverb
+    \endentry
+    \entry{scikitlearnDecisionTrees}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=5430536464c795a09dff52a438ccdf79}{%
+           family={{scikit learn}},
+           familyi={s\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Decision Trees}%
+      }
+      \strng{namehash}{5430536464c795a09dff52a438ccdf79}
+      \strng{fullhash}{5430536464c795a09dff52a438ccdf79}
+      \strng{fullhashraw}{5430536464c795a09dff52a438ccdf79}
+      \strng{bibnamehash}{5430536464c795a09dff52a438ccdf79}
+      \strng{authorbibnamehash}{5430536464c795a09dff52a438ccdf79}
+      \strng{authornamehash}{5430536464c795a09dff52a438ccdf79}
+      \strng{authorfullhash}{5430536464c795a09dff52a438ccdf79}
+      \strng{authorfullhashraw}{5430536464c795a09dff52a438ccdf79}
+      \field{sortinit}{s}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Decision {{Trees}}}
+      \field{urlday}{5}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://scikit-learn.org/stable/modules/tree.htm
+      \endverb
+      \verb{url}
+      \verb https://scikit-learn.org/stable/modules/tree.htm
+      \endverb
+    \endentry
+    \entry{sklearnerConfigureDecisionTreeClassifierMax_depth}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=abce81cd9fcb0a126107226b6d85614b}{%
+           family={{SKLearner}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {SKLearner}%
+      }
+      \strng{namehash}{abce81cd9fcb0a126107226b6d85614b}
+      \strng{fullhash}{abce81cd9fcb0a126107226b6d85614b}
+      \strng{fullhashraw}{abce81cd9fcb0a126107226b6d85614b}
+      \strng{bibnamehash}{abce81cd9fcb0a126107226b6d85614b}
+      \strng{authorbibnamehash}{abce81cd9fcb0a126107226b6d85614b}
+      \strng{authornamehash}{abce81cd9fcb0a126107226b6d85614b}
+      \strng{authorfullhash}{abce81cd9fcb0a126107226b6d85614b}
+      \strng{authorfullhashraw}{abce81cd9fcb0a126107226b6d85614b}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Configure {{DecisionTreeClassifier}} "Max\_depth" {{Parameter}}}
+      \field{urlday}{5}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://sklearner.com/sklearn-decisiontreeclassifier-max_depth-parameter/
+      \endverb
+      \verb{url}
+      \verb https://sklearner.com/sklearn-decisiontreeclassifier-max_depth-parameter/
+      \endverb
+    \endentry
+    \entry{wijayaNBDLite42023}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=46e9d24ec884c63f5141de2c447593e3}{%
+           family={Wijaya},
+           familyi={W\bibinitperiod},
+           given={Cornellius\bibnamedelima Yudha},
+           giveni={C\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{46e9d24ec884c63f5141de2c447593e3}
+      \strng{fullhash}{46e9d24ec884c63f5141de2c447593e3}
+      \strng{fullhashraw}{46e9d24ec884c63f5141de2c447593e3}
+      \strng{bibnamehash}{46e9d24ec884c63f5141de2c447593e3}
+      \strng{authorbibnamehash}{46e9d24ec884c63f5141de2c447593e3}
+      \strng{authornamehash}{46e9d24ec884c63f5141de2c447593e3}
+      \strng{authorfullhash}{46e9d24ec884c63f5141de2c447593e3}
+      \strng{authorfullhashraw}{46e9d24ec884c63f5141de2c447593e3}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{How you can manipulate the parameter for your work}
+      \field{day}{16}
+      \field{langid}{english}
+      \field{month}{12}
+      \field{shorttitle}{{{NBD Lite}} \#4}
+      \field{title}{{{NBD Lite}} \#4: {{Effect}} of {{Min Samples Leaf}} on {{Tree Model Complexity}}}
+      \field{urlday}{6}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
+      \field{year}{2023}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /Users/aaraya/Zotero/storage/9W3UZIAD/nbd-lite-4-effect-of-min-samples.html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.nb-data.com/p/nbd-lite-4-effect-of-min-samples
+      \endverb
+      \verb{url}
+      \verb https://www.nb-data.com/p/nbd-lite-4-effect-of-min-samples
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
