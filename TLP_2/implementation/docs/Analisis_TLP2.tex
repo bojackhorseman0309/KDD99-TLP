@@ -14,6 +14,7 @@
 \usepackage{longtable}
 \usepackage{graphicx}
 \usepackage{listings}
+\usepackage{float}
 \usepackage[backend=biber]{biblatex}
 \addbibresource[location=remote]{http://127.0.0.1:23119/better-bibtex/export?/library;id:1/collection;key:M4EDAN3U/TP2.biblatex}
 
@@ -312,14 +313,250 @@ En el Cuadro 5 se muestran las tres mejores arquitecturas para el estudio realiz
 gini es el mas determinante para este problema, asi como el min_samples_leaf con su valor de 1. Ademas se observa que el
 valor de max_depth y min_samples_split son similares pero tienden a variar un poco entre los modelos.
 
-Para mostrar los resultados de la evolucion de la optimizacion se generaron distintos graficos mostrados en la Figuras X,
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{l c}
+    \hline
+    Métrica & Valor \\
+    \hline
+    F1-score promedio & 0.6495 \\
+    Desviación estándar & 0.0975 \\
+    F1-score mínimo & 0.2717 \\
+    F1-score máximo & 0.8092 \\
+    \hline
+  \end{tabular}
+  \caption{Estadísticas de la optimización}
+  \label{tab:optuna_stats}
+\end{table}
+
+En cuanto al Cuadro 6 se muestran las estadisticas de la optimizacion en cuando al F1-Score.
+Donde se observa su promedio, desviacion estandar, minimo y maximo, siendo el maximo el mejor valor encontrado.
+
+Para mostrar los resultados de la evolucion de la optimizacion se generaron distintos graficos mostrados en la Figuras 1, 2, 3 y 4,
 que serian la historia de optimizacion del F1-Score, importancia de los hiperparametros,
 relaciones entre parametros, distribuciones de los valores objetivo y una comparacion de las tres mejores arquitecturas por F1-Score.
 
-% \begin{figure}[htpb]
-%   \centering
-%   \includegraphics[width=0.4\textwidth]{img/Optimization}
-%   \caption{Histograma para el campo `duration', `src_bytes' y `dst_bytes'}\label{fig:figure}
-% \end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{../img/OptimizationHistory.png}
+  \caption{Historia de optimizacion del F1-Score}\label{fig:decison-tree-optimization-history}
+\end{figure}
+
+En la Figura 1 se explica la evolucion de la metrica objetivo que fue el F1-Score a lo largo de las 100 corridas.
+Se puede apreciar la tendencia a la alza de la mejor puntuacion pero tambien se observa las variaciones en el la
+metrica de forma muy dispersa a lo largo de las pruebas.
+La mejor puntuacion fue encontrada en la corrida 89, la cual fue la que genero el mejor F1-Score de 0.8092, las otras dos
+mejores fueron encontradas alrededor de las pruebas entre 40 y 50.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{../img/HyperparameterImportance.png}
+  \caption{Importancia de los hiperparametros}\label{fig:decison-tree-hyperparameter-importance}
+\end{figure}
+
+En la Figura 2 se retrata cuales fueron los hiperparametros que tuvieron mas incidencia para contribuir
+con la mejora de la metrica objetivo. En este caso como podemos observar la profundidad maxima tiene una
+importancia mucho mas grande que las demas.
+En este orden se dice que el parametro mas importante es el max_depth,
+seguido por el min_samples_leaf, el min_samples_split y el criterion.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{../img/SliceDecisionTree.png}
+  \caption{Relaciones entre hiperparametros y la metrica objetivo}\label{fig:decison-tree-slice}
+\end{figure}
+
+En la Figura 3 se muestran como los hiperparametros optimizados interactuan entre si para generar el mejor F1-Score.
+En esta grafica podemos ver la tendencia de cada uno de los parametros
+a cambiar su valor dentro del rango utilizado lo largo de las pruebas.
+Se puede observar como alguna de estas tienden a quedarse en cierto grupo de valores,
+en el caso de Gini, se ve como se utiliza mas que el valor de Entropy, asi como min_samples_leaf y min_samples_split
+tienden a quedarse en valores del lado medio-bajo y finalmente el max_depth tiende a utilizar valores altos.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{../img/EDFDecisionTree.png}
+  \caption{Distribucion del valor objetivo}\label{fig:edf-decision-tree}
+\end{figure}
+
+La Figura 4 es una grafica de distribucion del valor objetivo que fue el F1-Score, se observa que
+la puntuacion estuvo en un rango entre alrededor de 0.3 y 0.8, siendo el 0.8 el mejor valor encontrado.
+Ademas de eso se aprecia como la mayoria de pruebas tuvieron una puntuacion entre 0.6 y 0.8,
+dando como resultado que con Optuna se encontraron buenos resultados en la mayoria de pruebas.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{../img/ParallelDecisionTree.png}
+  \caption{Coordenadas paralelas: relación entre hiperparámetros y F1-macro}\label{fig:parallel-decision-tree}
+\end{figure}
+
+En la Figura 5 se observa que las mejores corridas por F1-macro (0.79 - 0.81)
+se concentran en combinaciones con max_depth alto (13 - 17), min_samples_leaf de 1, min_samples_split (7 - 12)
+y criterion de gini. Esto sugiere que el modelo se beneficia de árboles relativamente profundos con hojas pequeñas,
+regulados por un umbral de división moderado. Al aumentar min_samples_leaf por encima de 1 o al reducir mucho la profundidad,
+el desempeño tiende a degradarse. Asimismo, gini domina sobre entropy en este problema,
+consistente con los tres mejores resultados encontrados del Cuadro 5.
+
+\subsubsection{Comparacion de las mejores arquitecturas con particiones diferentes}
+
+En esta seccion se comparan las tres mejores arquitecturas que se muestran en el Cuadro 5 y se evaluan
+mediante 10 corridas independientes, generando particiones diferentes para cada corrida manteniendo la
+proporcion definida en la funcion `split_dataset' y calculando diferentes metricas
+como el F1-Score, accuracy y tasa de falsos positivos para todas las evaluaciones.
+Finalmente se recopilaron todos los resultados, y se calculo las medias
+y desviaciones estandar de cada una de las arquitecturas y sus corridas.
+
+Para poder lograr el objetivo de esta seccion se guardaron los resultados de las tres mejores arquitecturas
+en una lista para su uso posterior, este contenia los parametros, posicion y F1-Score de cada una de las arquitecturas.
+Despues se definio la funcion `evaluate_dt_architecture_multiple_runs' la cual va estar encargada de:
+
+\begin{itemize}
+  \item Recibir los parametros de la arquitectura a evaluar necesarias para la funcion `DecisionTreeClassifier' de Scikit Learn
+    asi como el numero de corridas a realizar por arquitectura y semillas si es necesario para reproducibilidad.
+  \item Se itera sobre el numero de corridas y se generan las nuevas particiones por medio de la funcion `split_dataset'
+  \item Se entrena el arbol de decision con los parametros recibidos y las nuevas particiones
+  \item Se generan las predicciones por medio de la particion de prueba
+  \item Se evalua y se obtiene el F1-Score Macro, F1-Score por clase, accuracy y
+    tasa de falsos positivos para todas las evaluaciones, siendo estos
+    guardados en una lista individualmente
+  \item Se retorna un diccionario con los resultados de las metricas calculadas como
+    numero de corridas, parametros, todos los F1-Score, accuracy, tasa de falsos positivos y matriz de confusion,
+    ademas de las estadisticas como promedio y desviaciones de las metricas generadas.
+\end{itemize}
+
+Las metricas fueron calculadas mediante las funciones de Scikit Learn `f1_score', `accuracy_score', `precision_recall_fscore_support' y `confusion_matrix'.
+
+Para el calculo de la tasa de falsos positivos se utilizo la formula:
+
+\[
+  FPR = \frac{FP}{FP + TN}
+\]
+
+Donde FP es el numero de falsos positivos y TN es el numero de verdaderos negativos.
+Se utilizo la funcion `confusion_matrix' de Scikit Learn para obtener
+la matriz de confusion y calcular los valores de FP y TN.
+
+En los siguientes Cuadros 7, 8 y 9, se muestran las corridas realizadas y sus metricas.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c c c c}
+    \hline
+    Corrida & F1 & Accuracy & FPR \\
+    \hline
+    1  & 0.7639 & 0.9988 & 0.0001 \\
+    2  & 0.7294 & 0.9982 & 0.0001 \\
+    3  & 0.7188 & 0.9982 & 0.0001 \\
+    4  & 0.6905 & 0.9980 & 0.0002 \\
+    5  & 0.7014 & 0.9981 & 0.0002 \\
+    6  & 0.7413 & 0.9983 & 0.0001 \\
+    7  & 0.7452 & 0.9982 & 0.0001 \\
+    8  & 0.7432 & 0.9985 & 0.0001 \\
+    9  & 0.8402 & 0.9984 & 0.0001 \\
+    10 & 0.6797 & 0.9981 & 0.0002 \\
+    \hline
+  \end{tabular}
+  \caption{Resultados – Arquitectura 1}
+  \label{tab:corridas_arq1}
+\end{table}
+
+El Cuadro 7 exhibe como la Arquitectura 1 que era la que obtuvo la mejor puntuacion, sigue mejorando un poco
+mas con estas particiones realizadas, inclusive llegando a obtener un F1-Score de 0.8402, siendo este un mejor resultado
+al inicial con Optuna que se obtuvo de 0.8092.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c c c c}
+    \hline
+    Corrida & F1 & Accuracy & FPR \\
+    \hline
+    1  & 0.7200 & 0.9979 & 0.0002 \\
+    2  & 0.7110 & 0.9978 & 0.0002 \\
+    3  & 0.6552 & 0.9972 & 0.0003 \\
+    4  & 0.6768 & 0.9978 & 0.0002 \\
+    5  & 0.6416 & 0.9981 & 0.0002 \\
+    6  & 0.6390 & 0.9976 & 0.0002 \\
+    7  & 0.6400 & 0.9978 & 0.0002 \\
+    8  & 0.6782 & 0.9977 & 0.0002 \\
+    9  & 0.6988 & 0.9976 & 0.0002 \\
+    10 & 0.7262 & 0.9978 & 0.0002 \\
+    \hline
+  \end{tabular}
+  \caption{Resultados – Arquitectura 2}
+  \label{tab:corridas_arq2}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c c c c}
+    \hline
+    Corrida & F1 & Accuracy & FPR \\
+    \hline
+    1  & 0.6737 & 0.9976 & 0.0002 \\
+    2  & 0.6167 & 0.9974 & 0.0003 \\
+    3  & 0.6483 & 0.9975 & 0.0002 \\
+    4  & 0.7159 & 0.9974 & 0.0002 \\
+    5  & 0.7049 & 0.9977 & 0.0002 \\
+    6  & 0.6719 & 0.9973 & 0.0002 \\
+    7  & 0.7013 & 0.9977 & 0.0002 \\
+    8  & 0.6717 & 0.9972 & 0.0003 \\
+    9  & 0.6704 & 0.9977 & 0.0002 \\
+    10 & 0.6486 & 0.9970 & 0.0003 \\
+    \hline
+  \end{tabular}
+  \caption{Resultados – Arquitectura 3}
+  \label{tab:corridas_arq3}
+\end{table}
+
+En cuanto al Cuadro 8 y 9 al ser arquitecturas encontradas con configuracion identica se tienen resultados similares,
+en este caso a diferencia de la primera arquitectura no se mejoro su F1-Score inicial de 0.7877.
+
+En general todas las particiones obtuvieron metricas buenas inclusive en casi todos los falsos postivos tienen valores
+muy bajos y los F1-Score por clase tambien estan cerca de 1, dando a entender que es posible que obtengan
+pocas falsas detecciones y puedan clasificar en su mayoria correctamente las clases.
+
+Para generar un resumen de todos los resultados y calcular las medias y desviaciones estandar de las metricas se genero una logica
+en el notebook la cual esta encargada de utilizar todos los resultados guardados previamente de la funcion `evaluate_dt_architecture_multiple_runs'
+que contiene una lista de los resultados de todas las evaluaciones, conteniendo los momentos estadisticos de
+cada una de las metricas utilizadas para cada corrida por arquitectura, asi como los parametros utilizados para cada corrida.
+Siguientemente la logica genera una tabla y unos graficos para visualizaion de la distribucion y valores de las medias, ademas de la desviacion estandaar
+para cada arquitectura y sus corridas para una mejor comparacion.
+
+\begin{table}[ht]
+  \centering
+  \tiny
+  \begin{tabular}{lcccc}
+    \hline
+    Arquitectura & F1-macro Media & F1-macro Desviación Estandar & FPR Media & FPR Desviación Estandar \\
+    \hline
+    \#1 & 0.7353 & 0.0431 & 0.0001 & 0.0000 \\
+    \#2 & 0.6787 & 0.0323 & 0.0002 & 0.0000 \\
+    \#3 & 0.6723 & 0.0284 & 0.0002 & 0.0000 \\
+    \hline
+  \end{tabular}
+  \caption{Resultados de las Corridas con Particiones Diferentes}
+  \label{tab:corridas_part_dt}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{../img/ComparacionPartArqui.png}
+  \caption{Comparacion de las Arquitectura con Particiones Diferentes}\label{fig:partition-architectures-decision-tree}
+\end{figure}
+
+En el Cuadro 10 y la Figura 6 se muestran los resultados generales por arquitectura para todas las 10 corridas realizadas para cada una.
+En esta se reporta la media y desviacion para las metricas que se utilizadon de F1-Score macro y tasa de falsos positivos.
+
+En base al Cuadro 10 y la Figura 6 se pueden generar varias conclusiones de acuerdo a las arquitecturas encontradas:
+
+\begin{itemize}
+  \item La Arquitectura 1 es la que obtiene el mejor F1-Score macro y tasa de falsos positivos. Por ende
+    sigue demostrando que es la mejor arquitectura en comparacion a las otras dos arquitecturas.
+  \item La Arquitectura 2 y 3 al tener los mismos parametros son similares pero tienen una menor desviacion en sus resultados
+    dando a entender que son un poco mas estables en sus resultados, la arquitectura 1 parece ser mas dispersa.
+  \item Todas las arquitecturas presentan una tasa de falsos positivos muy baja, siendo este un buen resultado
+    para el problema de deteccion de intrusos, ya que un aspecto importante es que se tengan pocas falsas detecciones
+    y un sistema de este tipo sea mas robusto.
+\end{itemize}
 
 \end{document}

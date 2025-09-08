@@ -1,12 +1,18 @@
 # Fdb version 4
-["biber Analisis_TLP2"] 1757119007.48508 "Analisis_TLP2.bcf" "Analisis_TLP2.bbl" "Analisis_TLP2" 1757165362.20811 0
-  "Analisis_TLP2.bcf" 1757165362.16101 108928 fa53cd615808c9cbd7e9bf5cccc4bf2d "pdflatex"
+["biber Analisis_TLP2"] 1757119007.48508 "Analisis_TLP2.bcf" "Analisis_TLP2.bbl" "Analisis_TLP2" 1757289402.44259 0
+  "Analisis_TLP2.bcf" 1757289402.38912 108928 fa53cd615808c9cbd7e9bf5cccc4bf2d "pdflatex"
   (generated)
   "Analisis_TLP2.bbl"
   "Analisis_TLP2.blg"
   (rewritten before read)
-["pdflatex"] 1757165361.45345 "/Users/aaraya/git/KDD99-TLP/TLP_2/implementation/docs/Analisis_TLP2.tex" "Analisis_TLP2.pdf" "Analisis_TLP2" 1757165362.20831 0
-  "/Users/aaraya/git/KDD99-TLP/TLP_2/implementation/docs/Analisis_TLP2.tex" 1757165361.29663 15746 baaa04570fd30ab1cef2ca3a2706f16a ""
+["pdflatex"] 1757289401.42365 "/Users/aaraya/git/KDD99-TLP/TLP_2/implementation/docs/Analisis_TLP2.tex" "Analisis_TLP2.pdf" "Analisis_TLP2" 1757289402.44282 0
+  "../img/ComparacionPartArqui.png" 1757288023.72612 71210 45e5a141af284344595f561c9a519c91 ""
+  "../img/EDFDecisionTree.png" 1757164387.15173 37069 f6c17845e01cbb7ea19689421a6310a0 ""
+  "../img/HyperparameterImportance.png" 1757164339.77199 29487 f2894b7beb532a846272f19d0175ef5e ""
+  "../img/OptimizationHistory.png" 1757164314.40388 31540 ed59ad34930c418d108c7a5b13846211 ""
+  "../img/ParallelDecisionTree.png" 1757164444.68678 262719 4c714d88c36947ab76b8300b3bb50292 ""
+  "../img/SliceDecisionTree.png" 1757164427.66704 79356 48fa05db87cc44570e9c51055cdabd43 ""
+  "/Users/aaraya/git/KDD99-TLP/TLP_2/implementation/docs/Analisis_TLP2.tex" 1757289401.26079 27310 e5c96f7958e7c52ff45aab986447bd31 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplb7t.tfm" 1136768653 1616 371d1ee60c04b008c8fd760060cd34f1 ""
@@ -33,6 +39,8 @@
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1136768653 1124 6c73e740cf17375f03eec0ee63599741 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1136768653 1116 933a60c408fc0a863a92debe84b2d294 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1136768653 1120 8b7d695260f3cff42e636090a8002094 ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb" 1248133631 36741 fa121aac0049305630cf160b86157ee4 ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb" 1136849748 52406 dad2f72863a03727d5f536c64a69c452 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb" 1136849748 52665 661b1e6b26edb5f50dd491f8a701cb57 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplb7t.vf" 1136768653 1380 798ef26de8f0a21f37c9b1147f4fe5d8 ""
@@ -87,6 +95,7 @@
   "/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1579991033 13886 d1306dcf79a944f6988e688c1785f9ce ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/etoolbox/etoolbox.sty" 1739306980 46850 d87daedc2abdc653769a6f1067849fe0 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/firstaid/underscore-ltx.sty" 1717359999 1901 3576027d0126e44ffbc5775018918dc4 ""
+  "/usr/local/texlive/2025/texmf-dist/tex/latex/float/float.sty" 1137110151 6749 16d2656a1984957e674b149555f1ea1d ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/geometry/geometry.sty" 1578002852 41601 9cf6c5257b1bc7af01a58859749dd37a ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-cfg/graphics.cfg" 1465944070 1224 978390e9c2234eab29404bc21b268d1e ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-def/pdftex.def" 1713382759 19440 9da9dcbb27470349a580fca7372d454b ""
@@ -124,11 +133,11 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1753314414 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "Analisis_TLP2.aux" 1757165362.15801 3575 5d8b40d3d90aefec5fc468823540c689 "pdflatex"
+  "Analisis_TLP2.aux" 1757289402.386 6536 4cf3266026c0f24a880914ab1a31f758 "pdflatex"
   "Analisis_TLP2.bbl" 1757119008.65699 14767 ae8392acc0eeaeed622d46347ec7a73c "biber Analisis_TLP2"
-  "Analisis_TLP2.out" 1757165362.16025 1553 46b1df6b02543b4f0ff246ae89f328ad "pdflatex"
-  "Analisis_TLP2.run.xml" 1757165362.16158 2287 931869c1503e9d653009b846c6ac75ef "pdflatex"
-  "Analisis_TLP2.tex" 1757165361.29663 15746 baaa04570fd30ab1cef2ca3a2706f16a ""
+  "Analisis_TLP2.out" 1757289402.38835 1976 e4e91e6e6b52cf53f882b421f390a2ec "pdflatex"
+  "Analisis_TLP2.run.xml" 1757289402.38966 2287 931869c1503e9d653009b846c6ac75ef "pdflatex"
+  "Analisis_TLP2.tex" 1757289401.26079 27310 e5c96f7958e7c52ff45aab986447bd31 ""
   (generated)
   "Analisis_TLP2.aux"
   "Analisis_TLP2.bcf"
