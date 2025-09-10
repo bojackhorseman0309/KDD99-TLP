@@ -1,0 +1,28 @@
+Quiz 4
+September 8, 2025
+
+1 Contexto
+
+A partir de los datos y resultados del primer proyecto programado (basado en el dataset K99), en este
+quiz corto, se desarrollara un detector de anomalias, basado en un modelado probabilistico parametrico.
+Suba un jupyter notebook con el codigo y los comentarios.
+
+2 Enunciado
+
+2.1 Elija las 5 caracteristicas con mayor distancia entre las densidades de los ataques y mensajes
+normales en el conjunto de datos.
+
+2.2 Parta los datos en una particion de entrenamiento (70%) y otra de prueba (30 %).
+
+2.3 Por cada caracteristica, ajuste los parametros de un modelo Gaussiano o un modelo parametrico
+mas adecuado, para los datos de mensajes normales. Reporte los parametros del modelo
+para cada caracteristica y grafiquelos junto con el histograma de los datos. Use los datos de
+entrenamiento para ello.
+
+2.4 Escoja 3 umbrales diferentes de aceptacion para comportamientos normales y con los datos
+de prueba, usando cada una de las 5 caracteristicas por separado, calcule la verosimilitud y
+discrimine entre ataques y comportamientos normales. Calcule la matriz de confusion. Comente
+los resultados.
+
+2.5 Realice lo mismo del item anterior, pero usando como puntaje el promedio de las verosimilitudes
+de las 5 caracteristicas. Calcule la matriz de confusion. Comente los resultados.
