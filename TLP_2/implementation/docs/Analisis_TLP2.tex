@@ -164,6 +164,11 @@ sus clases.
 
 \subsection{Entrenamiento, Optimización y Evaluación del Árbol de Decisión}
 
+En esta seccion se realizo la optimizacion de los parametros del arbol de decision con Optuna.
+Se compararon los tres mejores arboles de decision encontrados por Optuna y se evaluaron mediante 10 corridas independientes,
+generando particiones diferentes para cada corrida y calculando las metricas de evaluacion. Fialmente se genero
+una interpretacion en base a los graficos y tablas generados por los resultados de cada subseccion.
+
 \subsubsection{Optimización de Hiperparámetros con Optuna}
 
 Como parte del trabajo se realizo la optimizacion de varios hiperparametros para el arbol de decision implementado con Scikit Learn.
@@ -240,7 +245,7 @@ su duracion de ejecucion en Google Colab fue de alrededor de un poco mas de dos 
 mayores numeros de pruebas realmente no lo mejoraron significativamente por lo que no se justifica la computacion
 y tiempo mayor de estudio.
 
-Se utilizo la metrica a maximizar lo que es el F1-Score macro, debido a que el dataset KDD99 tiene clases desbalanceadas,
+Se utilizo el F1-Score macro como la metrica a maximizar, debido a que el dataset KDD99 tiene clases desbalanceadas,
 por lo que esta metrica permite dar importancia a todas las clases y no solo a algunas que son muy representativase
 en este conjunto. Otras metricas como el accuracy podrian creer que es un buen modelo para cierto tipo de ataques
 pero podria estar sesgado y otras clases podrian no ser detectadas correctamente con un rendimiento pobre.
@@ -313,7 +318,7 @@ En el Cuadro 5 se muestran las tres mejores arquitecturas para el estudio realiz
 gini es el mas determinante para este problema, asi como el min_samples_leaf con su valor de 1. Ademas se observa que el
 valor de max_depth y min_samples_split son similares pero tienden a variar un poco entre los modelos.
 
-\begin{table}[htbp]
+\begin{table}[H]
   \centering
   \begin{tabular}{l c}
     \hline
@@ -551,12 +556,159 @@ En base al Cuadro 10 y la Figura 6 se pueden generar varias conclusiones de acue
 
 \begin{itemize}
   \item La Arquitectura 1 es la que obtiene el mejor F1-Score macro y tasa de falsos positivos. Por ende
-    sigue demostrando que es la mejor arquitectura en comparacion a las otras dos arquitecturas.
+    sigue demostrando que es la mejor arquitectura en comparacion a las arquitecturas 2 y 3.
   \item La Arquitectura 2 y 3 al tener los mismos parametros son similares pero tienen una menor desviacion en sus resultados
-    dando a entender que son un poco mas estables en sus resultados, la arquitectura 1 parece ser mas dispersa.
+    dando a entender que son un poco mas estables en sus resultados, la arquitectura 1 es mas dispersa.
   \item Todas las arquitecturas presentan una tasa de falsos positivos muy baja, siendo este un buen resultado
     para el problema de deteccion de intrusos, ya que un aspecto importante es que se tengan pocas falsas detecciones
     y un sistema de este tipo sea mas robusto.
 \end{itemize}
+
+\subsection{Entrenamiento, Optimización y Evaluación de un Random Forest}
+
+En esta seccion se realizo la optimizacion del parametro n_estimators del Random Forest con Optuna,
+este parametro corresponde al numero de arboles del Random Forest.
+Se compararon los dos mejores Random Forests encontrados por Optuna y se evaluaron mediante 10 corridas independientes,
+generando particiones diferentes para cada corrida y calculando las metricas correspondientes,
+asi como una interpretacion final de todos los resultados generados.
+
+\subsubsection{Optimización de Hiperparámetros con Optuna}
+
+Similar a la seccion 1.2 se realizo la optimizacion de los parametros con Optuna, pero esta vez solamente
+optimizando un RandomForest por medio de la funcion `RandomForestClassifier' de Scikit Learn.
+Esto fue realizado en la funcion `optimize_random_forest' que se encarga de recibir por
+parametro un objeto de estudio de Optuna por medio de la función `create_study' y dentro de la funcion
+de optimizacion se definio el unico parametro a optimizar que es el n_estimators, este parametro
+indica la cantidad de arboles del Random Forest.
+Ademas, se entreno con la particion de entrenamiento y se evaluo con la particion de validacion,
+finalmente se utilizo el F1-Score macro como la metrica a maximizar y este era el valor que retornaba la funcion de optimizacion.
+
+Se optimizo mediante el la metrica de F1-Score macro, debido a las clases desbalanceadas del dataset KDD99, esto
+permitia poder realizar un promedio sin considerar la frecuencia de las clases y poder dar una mejor
+perspectiva del rendimiento general del modelo. Otras metricas podrian tener problemas en cuanto a sesgo de las clases
+y pensar que es un buen modelo sin tomar en cuanta otras clases minoritarias y generando posiblemente un modelo
+con muchas falsas alarmas
+
+Se realizaron 50 pruebas de optimizacion debido al alto tiempo de ejecucion y computo, en nuestros experimentos se observo que
+la mayoria de veces se obtenia el mejor resultado en corridas tempranas usualmente antes de la corrida 20, por lo que utilizar
+mas pruebas no se considero necesario para efecto del trabajo, tomando como balance la computacion y tiempo de corrida.
+En nuestra ejecucion en Google Colab el tiempo para ejecutar estos trials es de alrededor de siete minutos y medio.
+
+Se optimizo el parametro n_estimators en un rango de 10 a 300, este rango se escogio debido a que se observo que:
+\begin{itemize}
+  \item Utilizar pocos arboles el rendimiento es muy similar a utilizar un solo arbol,
+    por lo que se puede considerar que 10 arboles es un buen valor inicial.
+  \item En varios experimentos realizados la mejor solucion se encontro en menos de 100 n_estimators,
+    por lo que se podria considerar que 300 es un valor suficiente para experimentar, esto tambien es apoyado por
+    \autocite{probstHyperparametersTuningStrategies2019} donde menciona que en general hay
+    rendimientos decrecientes despues de 200 a 500 arboles.
+  \item El costo computacional podria aumentar si se utilizan demasiados arboles y el rendimiento podria no mejorar
+    en relacion con el costo y tiempo computacional.
+\end{itemize}
+
+\paragraph{Resultados y Demostración del Proceso de Optimizacion}
+
+Similar a los arboles de decision se generaron graficos y tablas para visualizar la evolucion de la optimizacion.
+Estos graficos tambien fueron provistos por la libreria Optuna por medio de su modulo optuna.visualization.
+
+Como resultado del proceso de optimizacion se encontro el mejor parametro n_estimator y F1-Score macro.
+Esto se muestra en el siguiente Cuadro 11:
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{lccc}
+    \hline
+    & Total de trials & Mejor F1-macro & \textit{n\_estimators} óptimo \\
+    \hline
+    Resultados & 50 & 0.7779 & 61 \\
+    \hline
+  \end{tabular}
+  \caption{Resumen de la optimización de Random Forest con Optuna}
+  \label{tab:optuna-rf-resumen}
+\end{table}
+
+Del Cuadro 11 se muestra un resultado optimo de 0.7779 en F1-Score macro, siendo este un buen resultado al ser mas cercano al 1
+y un numero de arboles moderado para el rango utilizado previamente que podia llegar hasta 300.
+
+Tambien, se calcularon las dos mejores arquitecturas que se muestran en el Cuadro 12:
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{lcc}
+    \hline
+    Modelo & F1-macro & \textit{n\_estimators} \\
+    \hline
+    Random Forest \#1 & 0.7779 & 61 \\
+    Random Forest \#2 & 0.7779 & 66 \\
+    \hline
+  \end{tabular}
+  \caption{Top 2 modelos de Random Forest encontrados}
+  \label{tab:optuna-rf-top2}
+\end{table}
+
+Del cuadro 12 observamos que las dos arquitecturas obtuvieron el mismo F1-Score macro y un numero de arboles muy similar.
+
+En base a las siguientes figuras generadas sobre la evolucion de la optimizacion se puede apreciar una mejor
+perspectiva del proceso.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{../img/OptimizationHistoryDecisionForest.png}
+  \caption{Historico de Optimizacion del Random Forest}\label{fig:optimization-random-forest}
+\end{figure}
+
+En la Figura 7 se denota como mejoro el valor objetivo que fue nuestro F1-Score macro a lo largo de los estudios.
+Se muestra como muy rapidamente desde menos de 10 trials se obtuvo el mejor resultado de las 50 pruebas,
+tambien a lo largo de los trials se observan distintos puntos donde el F1-Score llego a un punto similar en
+multiples pruebas, lo que podria indicar que no es posible realmente mejorar por mucho el modelo
+por mas trials que se hagan para el rango de n_estimators utilizado. Ademas, se observa como en general
+el RandomForest provee moderadamente buenos resultados, ya que la mayoria de pruebas obtuvieron un F1-Score macro
+entre 0.76 y 0.77.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{../img/SlicePlotRandomForest.png}
+  \caption{Relacion entre hiperparámetros y F1-macro}\label{fig:slice-plot-random-forest}
+\end{figure}
+
+En esta Figura 8 se encuentra con el mejor optimo entre alredor de 40 a 80 arboles, indicando que para el numero
+de pruebas realizadas no es necesario utilizar muchos mas arboles para obtener un mejor rendimiento, ya que
+los rangos mayores al 80 se estancan en valores similares o menores, lo que no justificarian un numero alto
+de arboles debido al costo computacinal y tiempo de entrenamiento, inclusive al utilizar
+un numero de arboles altos como se ve en algunas de estas pruebas de 200+ no se observa una mejoria significativa.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{../img/EDFRandomForest.png}
+  \caption{Distribucion del Valor Objetivo}\label{fig:edf-random-forest}
+\end{figure}
+
+De la Figura 9 se muestra que un aproximado del 75\% de las configuraciones de n_estimators
+obtuvieron un F1-Score macro entre 0.76 y 0.77, y solo una prueba obtuvo un F1-Score macro de 0.779, en general
+las puntuaciones fueron bastante similares y hasta existe un punto plano en el que el valor se mantiene constante
+hasta llegar al valor maximo.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{lc}
+    \hline
+    Métrica & Valor \\
+    \hline
+    F1-score promedio & 0.7708 \\
+    Desviación estándar & 0.0042 \\
+    F1-score mínimo & 0.7661 \\
+    F1-score máximo & 0.7779 \\
+    \hline
+  \end{tabular}
+  \caption{Estadísticas de la optimización de Random Forest}
+  \label{tab:rf-opt-stats}
+\end{table}
+
+Finalmente en el Cuadro 13 podemos ver los momentos estadisticos de la optimizacion de Random Forest,
+donde se observa el promedio del F1-Score siendo un valor moderadamente alto debido a que fueron muy similar en las coridas,
+una desviacion estandar moderada debido a que no existe mucha dispersion en las puntuaciones y esto es soportado
+por los maximos y minimos donde se ve que no fueron valores muy distantes.
+
+\subsubsection{Comparacion de los dos mejores Random Forests con particiones diferentes}
 
 \end{document}

@@ -219,6 +219,66 @@
       \verb https://www.analyticsvidhya.com/blog/2024/03/decision-trees-split-methods-hyperparameter-tuning/
       \endverb
     \endentry
+    \entry{probstHyperparametersTuningStrategies2019}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=dddbccb2c1aa9404d8c9d71319c47f20}{%
+           family={Probst},
+           familyi={P\bibinitperiod},
+           given={Philipp},
+           giveni={P\bibinitperiod}}}%
+        {{hash=7399da7b4ddc8a296c76a674449379b1}{%
+           family={Wright},
+           familyi={W\bibinitperiod},
+           given={Marvin\bibnamedelima N.},
+           giveni={M\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=81c0b82fe3ce640bddea33095e79e2ee}{%
+           family={Boulesteix},
+           familyi={B\bibinitperiod},
+           given={Anne‐Laure},
+           giveni={A\bibinithyphendelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{9cd692e654ad04c5cdcf61ee127a85ae}
+      \strng{fullhash}{9cd692e654ad04c5cdcf61ee127a85ae}
+      \strng{fullhashraw}{9cd692e654ad04c5cdcf61ee127a85ae}
+      \strng{bibnamehash}{9cd692e654ad04c5cdcf61ee127a85ae}
+      \strng{authorbibnamehash}{9cd692e654ad04c5cdcf61ee127a85ae}
+      \strng{authornamehash}{9cd692e654ad04c5cdcf61ee127a85ae}
+      \strng{authorfullhash}{9cd692e654ad04c5cdcf61ee127a85ae}
+      \strng{authorfullhashraw}{9cd692e654ad04c5cdcf61ee127a85ae}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The random forest (RF) algorithm has several hyperparameters that have to be set by the user, for example, the number of observations drawn randomly for each tree and whether they are drawn with or without replacement, the number of variables drawn randomly for each split, the splitting rule, the minimum number of samples that a node must contain, and the number of trees. In this paper, we first provide a literature review on the parameters' influence on the prediction performance and on variable importance measures. It is well known that in most cases RF works reasonably well with the default values of the hyperparameters specified in software packages. Nevertheless, tuning the hyperparameters can improve the performance of RF. In the second part of this paper, after a presenting brief overview of tuning strategies, we demonstrate the application of one of the most established tuning strategies, model‐based optimization (MBO). To make it easier to use, we provide the tuneRanger R package that tunes RF with MBO automatically. In a benchmark study on several datasets, we compare the prediction performance and runtime of tuneRanger with other tuning implementations in R and RF with default hyperparameters. This article is categorized under: Algorithmic Development {$>$} Biological Data Mining Algorithmic Development {$>$} Statistics Algorithmic Development {$>$} Hierarchies and Trees Technologies {$>$} Machine Learning}
+      \field{issn}{1942-4787, 1942-4795}
+      \field{journaltitle}{WIREs Data Mining and Knowledge Discovery}
+      \field{langid}{english}
+      \field{month}{5}
+      \field{number}{3}
+      \field{shortjournal}{WIREs Data Min \& Knowl}
+      \field{title}{Hyperparameters and Tuning Strategies for Random Forest}
+      \field{urlday}{11}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
+      \field{volume}{9}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{e1301}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1002/widm.1301
+      \endverb
+      \verb{file}
+      \verb /Users/aaraya/Zotero/storage/D8HRDTCJ/Probst et al. - 2019 - Hyperparameters and tuning strategies for random forest.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://wires.onlinelibrary.wiley.com/doi/10.1002/widm.1301
+      \endverb
+      \verb{url}
+      \verb https://wires.onlinelibrary.wiley.com/doi/10.1002/widm.1301
+      \endverb
+    \endentry
     \entry{raschkaWhyAreWe0000}{online}{}{}
       \name{author}{1}{}{%
         {{hash=bb679961e3f3f4bba79fc1cf3aa7df1c}{%
