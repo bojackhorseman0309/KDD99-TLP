@@ -433,9 +433,9 @@ Las metricas fueron calculadas mediante las funciones de Scikit Learn `f1_score'
 
 Para el calculo de la tasa de falsos positivos se utilizo la formula:
 
-\[
+\begin{equation}
   FPR = \frac{FP}{FP + TN}
-\]
+\end{equation}
 
 Donde FP es el numero de falsos positivos y TN es el numero de verdaderos negativos.
 Se utilizo la funcion `confusion_matrix' de Scikit Learn para obtener
@@ -710,5 +710,114 @@ una desviacion estandar moderada debido a que no existe mucha dispersion en las 
 por los maximos y minimos donde se ve que no fueron valores muy distantes.
 
 \subsubsection{Comparacion de los dos mejores Random Forests con particiones diferentes}
+
+Simiular a la implementacion de arboles de decision, en esta parte se compararon solamente dos arquitecturas de
+RandomForest que fueron encontradas despues de 50 pruebas optimizando la cantidad de arboles con Optuna, estas se
+puede observar en el Cuadro 12.
+
+Para efectos de esta tarea se genero una funcion llamada `evaluate_rf_architecture_multiple_runs' que se encarga de recibir
+los parametros guardados anteriormente de los RandomForests encontrados, el numero de corridas a realizar y una lista de seeds aleatorias
+para reproducir los experimentos.
+
+Esta funcion itera sobre el numero de corridas, se generan nuevas particiones mediante la funcion `split_dataset' realizada en la
+primera parte y se extrae los conjuntos de entrenamieto y prueba, se entrena el RandomForest con los parametros recibidos
+y se generan las predicciones con el conjunto de prueba, se calculan las metricas de F1-Score macro, F1-Score por clase, accuracy, tasa de
+falsos positivos, precision y recall por clase, ademas de la matriz de confusion, todos los resultados fueron recopilados,
+se generaron momentos estadisticos para las metricas y fueron guardados en una variable para uso posterior en las siguientes celdas.
+
+Esta funcion se ejecuto para las dos arquitecturas y se encontraron los siguientes resultados en el Cuadro 14 y 15:
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{rccc}
+    \hline
+    Corrida & F1-macro & Accuracy & FPR \\
+    \hline
+    1  & 0.8266 & 0.9991 & 0.0001 \\
+    2  & 0.8361 & 0.9994 & 0.0001 \\
+    3  & 0.7790 & 0.9995 & 0.0000 \\
+    4  & 0.7570 & 0.9991 & 0.0001 \\
+    5  & 0.7698 & 0.9994 & 0.0001 \\
+    6  & 0.8057 & 0.9991 & 0.0001 \\
+    7  & 0.7323 & 0.9989 & 0.0001 \\
+    8  & 0.7655 & 0.9990 & 0.0001 \\
+    9  & 0.8443 & 0.9993 & 0.0001 \\
+    10 & 0.8820 & 0.9994 & 0.0001 \\
+    \hline
+  \end{tabular}
+  \caption{Resultados por corrida del Random Forest \#1 (n\_estimators = 61)}
+  \label{tab:rf1-corridas}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{rccc}
+    \hline
+    Corrida & F1-macro & Accuracy & FPR \\
+    \hline
+    1  & 0.8865 & 0.9995 & 0.0000 \\
+    2  & 0.6743 & 0.9992 & 0.0001 \\
+    3  & 0.6932 & 0.9991 & 0.0001 \\
+    4  & 0.8408 & 0.9992 & 0.0001 \\
+    5  & 0.8618 & 0.9990 & 0.0001 \\
+    6  & 0.8302 & 0.9994 & 0.0001 \\
+    7  & 0.8782 & 0.9995 & 0.0000 \\
+    8  & 0.7747 & 0.9991 & 0.0001 \\
+    9  & 0.6997 & 0.9990 & 0.0001 \\
+    10 & 0.7704 & 0.9992 & 0.0001 \\
+    \hline
+  \end{tabular}
+  \caption{Resultados por corrida del Random Forest \#2 (n\_estimators = 66)}
+  \label{tab:rf2-corridas}
+\end{table}
+
+Como se observa en los Cuadros 14 y 15 se obtuvieron resultados muy similares para las dos arquitecturas.
+En este caso se observa que el F1-Macro aumento considerablemente respecto al mejor F1-Score macro
+obtenido en el proceso de optimizacion, como se puede leer, el mejor F1-Score macro fue de 0.7779 y ahora
+con estas particiones diferentes se obtuvieron valores entre 0.82 y 0.88, esto es un aumento considerable respecto
+a lo inicial. Ademas de esto, en ambas arquitecturas se observan valores de accuracy de 0.99+ indicando una buena
+capacidad de clasificar correctamente las clases y una tasa de falsos positivos muy baja, indicando que
+el modelo podria no tener muchas falsas alarmas, perfecto para un sistema de deteccion de intrusos.
+
+En el caso de esta comparacion podemos ver que el mejor F1-Score macro fue el de la Arquitectura 2,
+con un F1-Score macro de 0.8865 y una tasa de falsos positivos de 0. Sin embargo, podemos ver que la Arquitectura 1
+es mas estable ya que el rango de su F1-Score es menos variable entre corridas, el de la Arquitectura 2 es mas variable
+y sus valores por ende son mas dispersos, por lo que la Arquitectura 1 es mas consistente y confiable.
+
+Otro punto a recalcar es que ambos usaron una cantidad de estimadores similares de 61 y 66, y tienen
+una variabilidad moderada en sus resultados por lo que indica que este parametro tiene un nivel de impacto a considerar.
+
+\begin{table}[htbp]
+  \centering
+  \small
+  \begin{tabular}{cccccccc}
+    \hline
+    Random & n\_estimators & F1-macro & F1-macro & Accuracy & Accuracy & FPR & FPR \\
+    Forest &  & Media & Desv Std & Media & Desv Std & Media & Desv Std \\
+    \hline
+    \#1 & 61 & 0.7998 & 0.0444 & 0.9992 & 0.0002 & 0.0001 & 0.0000 \\
+    \#2 & 66 & 0.7910 & 0.0761 & 0.9992 & 0.0002 & 0.0001 & 0.0000 \\
+    \hline
+  \end{tabular}
+  \caption{Resumen de evaluación de los mejores Random Forests}
+  \label{tab:rf-resumen-evaluacion}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{../img/ComparacionRandomForest.png}
+  \caption{Comparacion de los dos mejores Random Forests}\label{fig:comparison-random-forest}
+\end{figure}
+
+En el Cuadro 16 y la Figura 10 podemos ver una comparacion de las estadisticas de los resultados de la corrida
+de las particiones por cada arquitectura, esto recalca los comentarios anteriores de que la Arquitectura 1 tiene menor
+dispersion y es mas estable, la tasa de falsos positivos es baja en ambos y casi que iguales por lo que
+son buenos modelos iniciales para un sistema de deteccion de intrusos.
+
+En general se podria decir que ambos son similares pero la Arquitectura 1 presenta menos dispersion en los resultados
+y usa menos arboles para su modelo por lo que es mas eficiente y tiene un buen rendimiento. Esto a nivel general
+tambien nos dice que los RandomForests presentan buenos resultados con pocas modificaciones respecto a sus parametros,
+ya que en este caso solo se modificaron los n_estimators y se dejaron los valores defecto de scikit learn.
+Existe la posibilidad de que se pueda mejorar mas el rendimiento de ambos modelos con otros parametros optimizados.
 
 \end{document}
