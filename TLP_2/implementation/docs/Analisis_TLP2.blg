@@ -1,17 +1,17 @@
 [0] Config.pm:308> INFO - This is Biber 2.20
 [0] Config.pm:311> INFO - Logfile is 'Analisis_TLP2.blg'
-[33] biber-darwin:340> INFO - === Thu Sep 11, 2025, 13:29:27
-[41] Biber.pm:420> INFO - Reading 'Analisis_TLP2.bcf'
-[79] Biber.pm:994> INFO - Found 10 citekeys in bib section 0
-[86] Biber.pm:4463> INFO - Processing section 0
-[90] Biber.pm:4654> INFO - Looking for bibtex file 'http://127.0.0.1:23119/better-bibtex/export?/library;id:1/collection;key:M4EDAN3U/TP2.biblatex' for section 0
-[91] Utils.pm:168> INFO - Data source 'http://127.0.0.1:23119/better-bibtex/export?/library;id:1/collection;key:M4EDAN3U/TP2.biblatex' is a remote BibTeX data source - fetching ...
-[338] bibtex.pm:1713> INFO - LaTeX decoding ...
-[346] bibtex.pm:1519> INFO - Found BibTeX data source '/var/folders/qd/xyzzjj7j45xbb6qkphn7tw4r0000gn/T/biber_tmp_O3ev/biber_remote_data_source_QBMOV.bib'
-[384] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[384] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
-[384] Biber.pm:4283> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'es-ES'
-[389] bbl.pm:676> INFO - Writing 'Analisis_TLP2.bbl' with encoding 'UTF-8'
-[391] bbl.pm:779> INFO - Output to Analisis_TLP2.bbl
-[391] Biber.pm:131> WARN - legacy year field '16:16:20 +0000' in entry 'raschkaWhyAreWe0000' is not an integer - this will probably not sort properly.
-[391] Biber.pm:133> INFO - WARNINGS: 1
+[32] biber-darwin:340> INFO - === Fri Sep 12, 2025, 14:29:31
+[39] Biber.pm:420> INFO - Reading 'Analisis_TLP2.bcf'
+[75] Biber.pm:994> INFO - Found 10 citekeys in bib section 0
+[82] Biber.pm:4463> INFO - Processing section 0
+[86] Biber.pm:4654> INFO - Looking for bibtex file 'http://127.0.0.1:23119/better-bibtex/export?/library;id:1/collection;key:M4EDAN3U/TP2.biblatex' for section 0
+[86] Utils.pm:168> INFO - Data source 'http://127.0.0.1:23119/better-bibtex/export?/library;id:1/collection;key:M4EDAN3U/TP2.biblatex' is a remote BibTeX data source - fetching ...
+[299] bibtex.pm:1713> INFO - LaTeX decoding ...
+[314] bibtex.pm:1519> INFO - Found BibTeX data source '/var/folders/qd/xyzzjj7j45xbb6qkphn7tw4r0000gn/T/biber_tmp_4Uon/biber_remote_data_source_T6Dqt.bib'
+[357] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[357] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
+[357] Biber.pm:4283> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'es-ES'
+[360] bbl.pm:676> INFO - Writing 'Analisis_TLP2.bbl' with encoding 'UTF-8'
+[362] bbl.pm:779> INFO - Output to Analisis_TLP2.bbl
+[362] Biber.pm:131> WARN - legacy year field '16:16:20 +0000' in entry 'raschkaWhyAreWe0000' is not an integer - this will probably not sort properly.
+[362] Biber.pm:133> INFO - WARNINGS: 1
