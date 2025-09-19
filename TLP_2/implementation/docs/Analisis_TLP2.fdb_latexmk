@@ -1,11 +1,12 @@
 # Fdb version 4
-["biber Analisis_TLP2"] 1758073525.64217 "Analisis_TLP2.bcf" "Analisis_TLP2.bbl" "Analisis_TLP2" 1758128058.55087 0
-  "Analisis_TLP2.bcf" 1758128058.49206 108623 fffc8a144a3a9fe5e6a804343606af0e "pdflatex"
+["biber Analisis_TLP2"] 1758252997.84196 "Analisis_TLP2.bcf" "Analisis_TLP2.bbl" "Analisis_TLP2" 1758253002.78595 0
+  "./TP2.biblatex" 1758252744.62413 10254 eaf991b2207901cdefc0c91b6a4fb515 ""
+  "Analisis_TLP2.bcf" 1758253002.72999 108543 b58fe0b9fa851631bb63024378a565f2 "pdflatex"
   (generated)
   "Analisis_TLP2.bbl"
   "Analisis_TLP2.blg"
   (rewritten before read)
-["pdflatex"] 1758128057.34291 "/Users/aaraya/git/KDD99-TLP/TLP_2/implementation/docs/Analisis_TLP2.tex" "Analisis_TLP2.pdf" "Analisis_TLP2" 1758128058.55108 0
+["pdflatex"] 1758253001.52901 "/Users/aaraya/git/KDD99-TLP/TLP_2/implementation/docs/Analisis_TLP2.tex" "Analisis_TLP2.pdf" "Analisis_TLP2" 1758253002.78619 0
   "../img/ComparacionPartArqui.png" 1757288023.72612 71210 45e5a141af284344595f561c9a519c91 ""
   "../img/ComparacionRandomForest.png" 1757638217.76567 116829 fc9a2a7c8b9e2c56e079598775d0617e ""
   "../img/EDFDecisionTree.png" 1757164387.15173 37069 f6c17845e01cbb7ea19689421a6310a0 ""
@@ -16,7 +17,7 @@
   "../img/ParallelDecisionTree.png" 1757164444.68678 262719 4c714d88c36947ab76b8300b3bb50292 ""
   "../img/SliceDecisionTree.png" 1757164427.66704 79356 48fa05db87cc44570e9c51055cdabd43 ""
   "../img/SlicePlotRandomForest.png" 1757620690.95138 31735 7127632a525902c53d7f293dc1fa3ed0 ""
-  "/Users/aaraya/git/KDD99-TLP/TLP_2/implementation/docs/Analisis_TLP2.tex" 1758128057.16277 42805 2634fccb93de1217d8d39bb843096c84 ""
+  "/Users/aaraya/git/KDD99-TLP/TLP_2/implementation/docs/Analisis_TLP2.tex" 1758252996.44182 42708 6a4a3acfe2c1b65fe52ee592f1edf16e ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136768653 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -154,11 +155,11 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1753314414 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "Analisis_TLP2.aux" 1758128058.4892 11024 99c0918225fd39556a3915ec16d1902f "pdflatex"
-  "Analisis_TLP2.bbl" 1758073526.73979 18615 c1b2981728aa8d331da27124f7a5a9ed "biber Analisis_TLP2"
-  "Analisis_TLP2.out" 1758128058.49136 3124 67c556c7453339897db1c0db90f9df60 "pdflatex"
-  "Analisis_TLP2.run.xml" 1758128058.49257 2287 931869c1503e9d653009b846c6ac75ef "pdflatex"
-  "Analisis_TLP2.tex" 1758128057.16277 42805 2634fccb93de1217d8d39bb843096c84 ""
+  "Analisis_TLP2.aux" 1758253002.72716 11024 99c0918225fd39556a3915ec16d1902f "pdflatex"
+  "Analisis_TLP2.bbl" 1758252999.02656 18615 c1b2981728aa8d331da27124f7a5a9ed "biber Analisis_TLP2"
+  "Analisis_TLP2.out" 1758253002.72925 3124 67c556c7453339897db1c0db90f9df60 "pdflatex"
+  "Analisis_TLP2.run.xml" 1758253002.7305 2368 cfc4269a582fce10fbbb1246700a85df "pdflatex"
+  "Analisis_TLP2.tex" 1758252996.44182 42708 6a4a3acfe2c1b65fe52ee592f1edf16e ""
   (generated)
   "Analisis_TLP2.aux"
   "Analisis_TLP2.bcf"

@@ -78,5 +78,8 @@
     <requires type="dynamic">
       <file>Analisis_TLP2.bcf</file>
     </requires>
+    <requires type="editable">
+      <file>./TP2.biblatex</file>
+    </requires>
   </external>
 </requests>

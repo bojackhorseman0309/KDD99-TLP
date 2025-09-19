@@ -1,0 +1,146 @@
+@online{arikTabNetAttentiveInterpretable2019,
+  title = {{{TabNet}}: {{Attentive Interpretable Tabular Learning}}},
+  shorttitle = {{{TabNet}}},
+  author = {Arik, Sercan O. and Pfister, Tomas},
+  date = {2019},
+  doi = {10.48550/ARXIV.1908.07442},
+  url = {https://arxiv.org/abs/1908.07442},
+  urldate = {2025-09-12},
+  abstract = {We propose a novel high-performance and interpretable canonical deep tabular data learning architecture, TabNet. TabNet uses sequential attention to choose which features to reason from at each decision step, enabling interpretability and more efficient learning as the learning capacity is used for the most salient features. We demonstrate that TabNet outperforms other neural network and decision tree variants on a wide range of non-performance-saturated tabular datasets and yields interpretable feature attributions plus insights into the global model behavior. Finally, for the first time to our knowledge, we demonstrate self-supervised learning for tabular data, significantly improving performance with unsupervised representation learning when unlabeled data is abundant.},
+  pubstate = {prepublished},
+  version = {5},
+  keywords = {FOS: Computer and information sciences,Machine Learning (cs.LG),Machine Learning (stat.ML)}
+}
+
+@online{aznarDecisionTreesGini2020,
+  title = {Decision {{Trees}}: {{Gini}} vs {{Entropy Quantdare}}},
+  shorttitle = {Decision {{Trees}}},
+  author = {Aznar, Pablo},
+  date = {2020-12-02T07:34:40+00:00},
+  url = {https://quantdare.com/decision-trees-gini-vs-entropy/},
+  urldate = {2025-09-06},
+  abstract = {What is the difference between gini or entropy criteria when using decision trees? In this post, both of them are compared.},
+  langid = {british},
+  organization = {Quantdare},
+  file = {/Users/aaraya/Zotero/storage/RYAQYXWG/decision-trees-gini-vs-entropy.html}
+}
+
+@online{christinaellisMaxDepthRandom2022,
+  type = {Blog},
+  title = {Max Depth in Random Forests},
+  author = {{Christina Ellis}},
+  date = {2022-08-28},
+  url = {https://crunchingthedata.com/max-depth-in-random-forests/},
+  urldate = {2025-09-05},
+  organization = {Crunching the Data}
+}
+
+@online{ConfigureDecisionTreeClassifierMin_samples_leaf,
+  title = {Configure {{DecisionTreeClassifier}} "Min\_samples\_leaf" {{Parameter}} | {{SKLearner}}},
+  url = {https://sklearner.com/sklearn-decisiontreeclassifier-min_samples_leaf-parameter/},
+  urldate = {2025-09-06},
+  file = {/Users/aaraya/Zotero/storage/ZPXL4HCW/sklearn-decisiontreeclassifier-min_samples_leaf-parameter.html}
+}
+
+@online{gibbinsVisualGuideTuning2025,
+  title = {A {{Visual Guide}} to {{Tuning Decision-Tree Hyperparameters}}},
+  author = {Gibbins, James},
+  date = {2025-08-28T13:05:00+00:00},
+  url = {https://towardsdatascience.com/visualising-decision-trees/},
+  urldate = {2025-09-06},
+  abstract = {How hyperparameter tuning visually changes decision trees},
+  langid = {american},
+  organization = {Towards Data Science},
+  file = {/Users/aaraya/Zotero/storage/LHWRNWB7/visualising-decision-trees.html}
+}
+
+@online{mDecisionTreesSplit2024,
+  title = {Decision {{Trees}}: {{Split Methods}} \& {{Hyperparameter Tuning}}},
+  shorttitle = {Decision {{Trees}}},
+  author = {M, Badrinarayan},
+  date = {2024-03-26T10:56:29+00:00},
+  url = {https://www.analyticsvidhya.com/blog/2024/03/decision-trees-split-methods-hyperparameter-tuning/},
+  urldate = {2025-09-06},
+  abstract = {Explore Decision Trees: Split Methods \& Hyperparameter Tuning for effective data analysis and model optimization.},
+  langid = {english},
+  organization = {Analytics Vidhya}
+}
+
+@incollection{oshiroHowManyTrees2012,
+  title = {How {{Many Trees}} in a {{Random Forest}}?},
+  booktitle = {Machine {{Learning}} and {{Data Mining}} in {{Pattern Recognition}}},
+  author = {Oshiro, Thais Mayumi and Perez, Pedro Santoro and Baranauskas, José Augusto},
+  editor = {Perner, Petra},
+  editora = {Hutchison, David and Kanade, Takeo and Kittler, Josef and Kleinberg, Jon M. and Mattern, Friedemann and Mitchell, John C. and Naor, Moni and Nierstrasz, Oscar and Pandu Rangan, C. and Steffen, Bernhard and Sudan, Madhu and Terzopoulos, Demetri and Tygar, Doug and Vardi, Moshe Y. and Weikum, Gerhard},
+  editoratype = {redactor},
+  date = {2012},
+  volume = {7376},
+  pages = {154--168},
+  publisher = {Springer Berlin Heidelberg},
+  location = {Berlin, Heidelberg},
+  doi = {10.1007/978-3-642-31537-4_13},
+  url = {http://link.springer.com/10.1007/978-3-642-31537-4_13},
+  urldate = {2025-09-11},
+  abstract = {Random Forest is a computationally efficient technique that can operate quickly over large datasets. It has been used in many recent research projects and real-world applications in diverse domains. However, the associated literature provides almost no directions about how many trees should be used to compose a Random Forest. The research reported here analyzes whether there is an optimal number of trees within a Random Forest, i.e., a threshold from which increasing the number of trees would bring no significant performance gain, and would only increase the computational cost. Our main conclusions are: as the number of trees grows, it does not always mean the performance of the forest is significantly better than previous forests (fewer trees), and doubling the number of trees is worthless. It is also possible to state there is a threshold beyond which there is no significant gain, unless a huge computational environment is available. In addition, it was found an experimental relationship for the AUC gain when doubling the number of trees in any forest. Furthermore, as the number of trees grows, the full set of attributes tend to be used within a Random Forest, which may not be interesting in the biomedical domain. Additionally, datasets’ density-based metrics proposed here probably capture some aspects of the VC dimension on decision trees and low-density datasets may require large capacity machines whilst the opposite also seems to be true.},
+  isbn = {978-3-642-31536-7 978-3-642-31537-4},
+  langid = {english},
+  file = {/Users/aaraya/Zotero/storage/N296B8KJ/Oshiro et al. - 2012 - How Many Trees in a Random Forest.pdf}
+}
+
+@article{probstHyperparametersTuningStrategies2019,
+  title = {Hyperparameters and Tuning Strategies for Random Forest},
+  author = {Probst, Philipp and Wright, Marvin N. and Boulesteix, Anne‐Laure},
+  date = {2019-05},
+  journaltitle = {WIREs Data Mining and Knowledge Discovery},
+  shortjournal = {WIREs Data Min \& Knowl},
+  volume = {9},
+  number = {3},
+  pages = {e1301},
+  issn = {1942-4787, 1942-4795},
+  doi = {10.1002/widm.1301},
+  url = {https://wires.onlinelibrary.wiley.com/doi/10.1002/widm.1301},
+  urldate = {2025-09-11},
+  abstract = {The random forest (RF) algorithm has several hyperparameters that have to be set by the user, for example, the number of observations drawn randomly for each tree and whether they are drawn with or without replacement, the number of variables drawn randomly for each split, the splitting rule, the minimum number of samples that a node must contain, and the number of trees. In this paper, we first provide a literature review on the parameters' influence on the prediction performance and on variable importance measures. It is well known that in most cases RF works reasonably well with the default values of the hyperparameters specified in software packages. Nevertheless, tuning the hyperparameters can improve the performance of RF. In the second part of this paper, after a presenting brief overview of tuning strategies, we demonstrate the application of one of the most established tuning strategies, model‐based optimization (MBO). To make it easier to use, we provide the               tuneRanger               R package that tunes RF with MBO automatically. In a benchmark study on several datasets, we compare the prediction performance and runtime of               tuneRanger               with other tuning implementations in R and RF with default hyperparameters.                                         This article is categorized under:                                                   Algorithmic Development {$>$} Biological Data Mining                                                     Algorithmic Development {$>$} Statistics                                                     Algorithmic Development {$>$} Hierarchies and Trees                                                     Technologies {$>$} Machine Learning},
+  langid = {english},
+  file = {/Users/aaraya/Zotero/storage/D8HRDTCJ/Probst et al. - 2019 - Hyperparameters and tuning strategies for random forest.pdf}
+}
+
+@online{raschkaWhyAreWe0000,
+  title = {Why Are We Growing Decision Trees via Entropy Instead of the Classification Error?},
+  author = {Raschka, Sebastian},
+  year = {16:16:20 +0000},
+  url = {https://sebastianraschka.com/faq/docs/decisiontree-error-vs-entropy.html},
+  urldate = {2025-09-06},
+  abstract = {Before we get to the main question – the real interesting part – let’s take a look at some of the (classification) decision tree basics to make sure that we ...},
+  langid = {english},
+  organization = {Sebastian Raschka, PhD},
+  file = {/Users/aaraya/Zotero/storage/YBBX6C39/decisiontree-error-vs-entropy.html}
+}
+
+@online{scikitlearnDecisionTrees,
+  title = {Decision {{Trees}}},
+  author = {{scikit learn}},
+  url = {https://scikit-learn.org/stable/modules/tree.htm},
+  urldate = {2025-09-05},
+  organization = {Decision Trees}
+}
+
+@online{sklearnerConfigureDecisionTreeClassifierMax_depth,
+  title = {Configure {{DecisionTreeClassifier}} "Max\_depth" {{Parameter}}},
+  author = {{SKLearner}},
+  url = {https://sklearner.com/sklearn-decisiontreeclassifier-max_depth-parameter/},
+  urldate = {2025-09-05},
+  organization = {SKLearner}
+}
+
+@online{wijayaNBDLite42023,
+  title = {{{NBD Lite}} \#4: {{Effect}} of {{Min Samples Leaf}} on {{Tree Model Complexity}}},
+  shorttitle = {{{NBD Lite}} \#4},
+  author = {Wijaya, Cornellius Yudha},
+  date = {2023-12-16},
+  url = {https://www.nb-data.com/p/nbd-lite-4-effect-of-min-samples},
+  urldate = {2025-09-06},
+  abstract = {How you can manipulate the parameter for your work},
+  langid = {english},
+  file = {/Users/aaraya/Zotero/storage/9W3UZIAD/nbd-lite-4-effect-of-min-samples.html}
+}
